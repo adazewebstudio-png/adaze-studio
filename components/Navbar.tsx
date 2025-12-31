@@ -36,6 +36,7 @@ export default function Navbar() {
                 <button
                     onClick={() => setIsOpen(!isOpen)}
                     className="md:hidden p-2 text-slate-300 hover:text-white z-50"
+                    aria-label="Toggle mobile menu"
                 >
                     {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                 </button>
