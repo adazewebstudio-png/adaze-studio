@@ -6,40 +6,79 @@ export default function PrivacyPolicy() {
         <main className="bg-slate-950 min-h-screen text-slate-300">
             <Navbar />
             <div className="container mx-auto px-6 py-32 max-w-4xl">
-                <h1 className="text-4xl font-bold text-white mb-8 font-display">Privacy Policy</h1>
+                <h1 className="text-4xl font-bold text-white mb-2 font-display">Privacy Policy</h1>
+                <p className="text-sm text-slate-500 mb-8">Last Updated: {new Date().getFullYear()}</p>
 
-                <div className="space-y-8 leading-relaxed">
+                <div className="space-y-10 leading-relaxed text-sm md:text-base">
                     <p>
-                        At Adaze Web Studio ("we," "our," or "us"), we respect your privacy and are committed to protecting the personal information you share with us. This Privacy Policy outlines how we collect, use, disclose, and safeguard your data when you visit our website or engage our services.
+                        Adaze Web Studio ("Company," "we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website <strong>adazestudio.com</strong>, engage our services, or participate in our Affiliate Program. Please read this privacy policy carefully. If you do not agree with the terms of this privacy policy, please do not access the site.
                     </p>
 
                     <section>
-                        <h2 className="text-2xl font-bold text-white mb-4">1. Information We Collect</h2>
-                        <p className="mb-4">We collect information to provide better services to all our users. The types of information we collect include:</p>
-                        <ul className="list-disc pl-6 space-y-2">
-                            <li><strong className="text-white">Personal Information:</strong> When you contact us or start a project, we may collect personal details such as your name, email address, phone number, company name, and billing address.</li>
-                            <li><strong className="text-white">Usage Data:</strong> We automatically collect certain information when you visit our website, including your IP address, browser type, operating system, referring URLs, and interaction data (pages visited, time spent).</li>
-                            <li><strong className="text-white">Communication Data:</strong> We retain records of your correspondence (emails, messages) to accurately respond to your inquiries and manage your project.</li>
+                        <h2 className="text-2xl font-bold text-white mb-4">1. Collection of Your Information</h2>
+                        <p className="mb-4">We may collect information about you in a variety of ways. The information we may collect on the Site includes:</p>
+                        <div className="space-y-4 pl-4 border-l-2 border-primary/20">
+                            <div>
+                                <h3 className="text-white font-semibold">Personal Data</h3>
+                                <p>Personally identifiable information, such as your name, shipping address, email address, and telephone number, and demographic information, such as your age, gender, hometown, and interests, that you voluntarily give to us when you register with the Site, express interest in our services, or choose to participate in various activities related to the Site.</p>
+                            </div>
+                            <div>
+                                <h3 className="text-white font-semibold">Derivative Data</h3>
+                                <p>Information our servers automatically collect when you access the Site, such as your IP address, your browser type, your operating system, your access times, and the pages you have viewed directly before and after accessing the Site.</p>
+                            </div>
+                            <div>
+                                <h3 className="text-white font-semibold">Financial Data</h3>
+                                <p>Financial information, such as data related to your payment method (e.g., valid credit card number, card brand, expiration date, or Mobile Money details), that we may collect when you purchase, order, return, exchange, or request information about our services from the Site.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 className="text-2xl font-bold text-white mb-4">2. Use of Your Information</h2>
+                        <p className="mb-4">Having accurate information about you permits us to provide you with a smooth, efficient, and customized experience. Specifically, we may use information collected about you via the Site to:</p>
+                        <ul className="list-disc pl-6 space-y-2 marker:text-primary">
+                            <li>Create and manage your account and affiliate profile.</li>
+                            <li>Process your payments, payouts, and prevent fraud.</li>
+                            <li>Email you regarding your account, project, or order.</li>
+                            <li>Compile anonymous statistical data and analysis for use internally.</li>
+                            <li>Deliver targeted advertising, coupons, newsletters, and promotions regarding our services.</li>
+                            <li>Monitor and analyze usage and trends to improve your experience with the Site.</li>
+                            <li>Perform other business activities as needed.</li>
                         </ul>
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-bold text-white mb-4">2. How We Use Your Information</h2>
-                        <p className="mb-4">We use the collected data for the following purposes:</p>
-                        <ul className="list-disc pl-6 space-y-2">
-                            <li><strong className="text-white">Service Delivery:</strong> To design, develop, and maintain websites and applications as per our agreement.</li>
-                            <li><strong className="text-white">Communication:</strong> To respond to inquiries, send project updates, invoices, and administrative messages.</li>
-                            <li><strong className="text-white">Improvement:</strong> To analyze website usage trends and improve our user experience and service offerings.</li>
-                            <li><strong className="text-white">Marketing:</strong> With your consent, we may send you newsletters or promotional offers relevant to your business needs (you may opt-out at any time).</li>
-                            <li><strong className="text-white">Legal Compliance:</strong> To comply with applicable laws, regulations, and legal processes.</li>
+                        <h2 className="text-2xl font-bold text-white mb-4">3. Disclosure of Your Information</h2>
+                        <p className="mb-4">We may share information we have collected about you in certain situations using commercially reasonable efforts to ensure confidentiality:</p>
+                        <ul className="list-disc pl-6 space-y-2 marker:text-primary">
+                            <li><strong>By Law or to Protect Rights:</strong> If we believe the release of information about you is necessary to respond to legal process, to investigate or remedy potential violations of our policies, or to protect the rights, property, and safety of others, we may share your information as permitted or required by any applicable law, rule, or regulation.</li>
+                            <li><strong>Third-Party Service Providers:</strong> We may share your information with third parties that perform services for us or on our behalf, including payment processing, data analysis, email delivery, hosting services, customer service, and marketing assistance.</li>
                         </ul>
                     </section>
 
                     <section>
-                        <h2 className="text-2xl font-bold text-white mb-4">3. Cookies and Tracking Technologies</h2>
+                        <h2 className="text-2xl font-bold text-white mb-4">4. Security of Your Information</h2>
                         <p>
-                            We use cookies and similar tracking technologies to enhance your browsing experience. Cookies are small data files stored on your device that help us remember your preferences and analyze site traffic. You can modify your browser settings to refuse cookies, though doing so may limit some website functionalities.
+                            We use administrative, technical, and physical security measures to help protect your personal information. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable, and no method of data transmission can be guaranteed against any interception or other type of misuse.
                         </p>
+                    </section>
+
+                    <section>
+                        <h2 className="text-2xl font-bold text-white mb-4">5. Policy for Children</h2>
+                        <p>
+                            We do not knowingly solicit information from or market to children under the age of 13. If you become aware that certain usage involves a child using our services without verification of parental consent, please contact us using the information provided below.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2 className="text-2xl font-bold text-white mb-4">6. Contact Us</h2>
+                        <p className="mb-2">If you have questions or comments about this Privacy Policy, please contact us at:</p>
+                        <address className="not-italic text-white">
+                            <strong>Adaze Web Studio</strong><br />
+                            Ho, Volta Region, Ghana<br />
+                            Email: <a href="mailto:adazewebstudio@gmail.com" className="text-primary hover:underline">adazewebstudio@gmail.com</a><br />
+                            Phone: <a href="tel:+233506562811" className="text-primary hover:underline">+233 50 656 2811</a>
+                        </address>
                     </section>
                 </div>
             </div>
