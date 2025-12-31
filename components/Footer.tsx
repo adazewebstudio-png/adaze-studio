@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { Rocket, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react'
+import Image from 'next/image'
+import { Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react'
 
 export default function Footer() {
     return (
@@ -9,8 +10,8 @@ export default function Footer() {
                     {/* Brand Column */}
                     <div className="md:col-span-1">
                         <Link href="/" className="inline-flex items-center gap-2 mb-6 group">
-                            <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
-                                <Rocket className="w-5 h-5 text-primary" />
+                            <div className="relative w-10 h-10 rounded-xl overflow-hidden flex items-center justify-center group-hover:opacity-80 transition-opacity">
+                                <Image src="/logo.png" alt="Adaze Web Studio Logo" fill className="object-cover" />
                             </div>
                             <span className="font-display font-bold text-xl text-white tracking-tight">Adaze Web Studio</span>
                         </Link>
@@ -57,12 +58,12 @@ export default function Footer() {
                         <ul className="space-y-4 text-sm text-slate-400">
                             <li className="flex items-start gap-3">
                                 <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                                <span>Ho, Volta Region, Ghana.</span>
+                                <span className="text-slate-400">Ho, Volta Region, Ghana.</span>
                             </li>
                             <li>
-                                <a href="mailto:enquiries@adazewebstudio.com" className="flex items-center gap-3 hover:text-white transition-colors">
+                                <a href="mailto:adazewebstudio@gmail.com" className="flex items-center gap-3 hover:text-white transition-colors">
                                     <Mail className="w-5 h-5 text-primary shrink-0" />
-                                    <span>enquiries@adazewebstudio.com</span>
+                                    <span>adazewebstudio@gmail.com</span>
                                 </a>
                             </li>
                             <li>
