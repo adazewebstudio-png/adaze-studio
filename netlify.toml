@@ -8,3 +8,7 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+  [plugins.inputs]
+  # Disable Netlify Forms to avoid migration requirement
+  disablePrerenderedHtml = true
