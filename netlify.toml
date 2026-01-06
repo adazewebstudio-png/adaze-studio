@@ -6,9 +6,5 @@
   NEXT_TELEMETRY_DISABLED = "1"
   NODE_VERSION = "20"
 
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
-
-  [plugins.inputs]
-  # Disable Netlify Forms to avoid migration requirement
-  disablePrerenderedHtml = true
+# Let Netlify auto-detect Next.js runtime without explicit plugin
+# The plugin was causing "Failed assembling prerendered content" errors
