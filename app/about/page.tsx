@@ -4,6 +4,9 @@ import { ArrowRight, CheckCircle2, Users, Target, Zap, MapPin } from 'lucide-rea
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
+// Force static generation for instant loading
+export const dynamic = 'force-static'
+
 export default function About() {
     return (
         <>

@@ -4,6 +4,9 @@ import { ArrowRight, Code2, Rocket, Globe, Smartphone, CheckCircle2, ChevronRigh
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
+// Force static generation for instant loading
+export const dynamic = 'force-static'
+
 export default function Home() {
     return (
         <>

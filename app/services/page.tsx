@@ -4,6 +4,9 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { packages } from '@/lib/packages'
 
+// Force static generation for instant loading
+export const dynamic = 'force-static'
+
 export default function Services() {
     return (
         <>

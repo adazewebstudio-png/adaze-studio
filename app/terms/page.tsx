@@ -1,6 +1,9 @@
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
+// Force static generation for instant loading
+export const dynamic = 'force-static'
+
 export default function TermsOfUse() {
     return (
         <main className="bg-slate-950 min-h-screen text-slate-300">
