@@ -7,20 +7,24 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                background: '#020617', // slate-950
-                foreground: '#f8fafc', // slate-50
+                background: '#ffffff', // White background
+                foreground: '#0f172a', // Dark Navy text (matches logo background)
                 primary: {
-                    DEFAULT: '#3b82f6', // blue-500
+                    DEFAULT: '#f5a623', // Golden amber
                     foreground: '#ffffff',
                 },
                 secondary: {
-                    DEFAULT: '#1e293b', // slate-800
+                    DEFAULT: '#0f172a', // Dark Navy
                     foreground: '#f8fafc',
                 },
                 accent: {
-                    DEFAULT: '#0ea5e9', // sky-500
-                    foreground: '#ffffff',
+                    DEFAULT: '#eab308', // Yellow-500
+                    foreground: '#0f172a',
                 },
+                navy: {
+                    DEFAULT: '#0f172a', // Explicit Name for Logo Navy
+                    light: '#1e293b',
+                }
             },
             fontFamily: {
                 sans: ['var(--font-inter)'],
@@ -41,8 +45,8 @@ module.exports = {
                     '100%': { transform: 'translateY(0)', opacity: '1' },
                 },
                 glow: {
-                    'from': { boxShadow: '0 0 10px #3b82f6, 0 0 20px #3b82f6' },
-                    'to': { boxShadow: '0 0 20px #0ea5e9, 0 0 30px #0ea5e9' },
+                    'from': { boxShadow: '0 0 10px #f5a623, 0 0 20px #f5a623' },
+                    'to': { boxShadow: '0 0 20px #eab308, 0 0 30px #eab308' },
                 },
             },
         },

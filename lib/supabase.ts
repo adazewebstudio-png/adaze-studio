@@ -16,6 +16,7 @@ export interface Affiliate {
     total_earnings: number
     total_paid: number
     is_active: boolean
+    profile_image?: string | null
     // Payment details
     payment_method?: 'momo' | 'bank' | null
     momo_provider?: string | null

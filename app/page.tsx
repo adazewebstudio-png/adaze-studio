@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, Code2, Rocket, Globe, Smartphone, CheckCircle2, ChevronRight } from 'lucide-react'
+import { ArrowRight, AlertTriangle, Target, Rocket, Globe, Code2, Smartphone, Search, Wrench, Send, CheckCircle2, Zap, BarChart3, Layout } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
@@ -11,277 +11,284 @@ export default function Home() {
     return (
         <>
             <Navbar />
-            <main className="min-h-screen flex flex-col">
+            <main id="main-content" className="min-h-screen flex flex-col pt-20">
 
-                {/* Hero Section */}
-                <section className="pt-32 pb-20 md:pt-48 md:pb-32 px-6 relative overflow-hidden">
-                    <div className="container mx-auto max-w-6xl relative z-10">
-                        <div className="md:w-3/4">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider mb-6 animate-fade-in">
-                                <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-                                Accepting New Clients
+                {/* ===== HERO SECTION ===== */}
+                <section className="pt-12 pb-20 md:pt-24 md:pb-32 px-6 relative overflow-hidden bg-white bg-grid-slate-100">
+                    {/* Background Gradient Blob */}
+                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl -z-10 translate-x-1/2 -translate-y-1/2"></div>
+
+                    <div className="container mx-auto max-w-7xl relative z-10">
+                        <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+                            {/* Hero Text */}
+                            <div className="md:w-1/2 text-center md:text-left">
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-navy/5 text-navy text-xs font-bold uppercase tracking-wider mb-6 border border-navy/10">
+                                    <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                                    Web Design & Development Agency
+                                </div>
+                                <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 text-navy">
+                                    Your website is <br className="hidden md:block" />
+                                    <span className="text-red-500">costing you customers.</span>
+                                </h1>
+                                <p className="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed max-w-xl mx-auto md:mx-0">
+                                    Most websites look good but fail to convert. We build digital platforms engineered to turn attention into revenue.
+                                </p>
+                                <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                                    <Link href="/start" className="inline-flex items-center justify-center px-8 py-4 bg-primary hover:bg-amber-400 text-navy font-bold rounded-full transition-all hover:scale-105 shadow-xl shadow-primary/25 group">
+                                        Fix My Website
+                                        <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                                    </Link>
+                                    <Link href="/#portfolio" className="inline-flex items-center justify-center px-8 py-4 bg-white border border-slate-200 hover:border-primary hover:text-primary text-navy font-bold rounded-full transition-all hover:shadow-lg">
+                                        View Our Work
+                                    </Link>
+                                </div>
+                                <div className="flex items-center justify-center md:justify-start gap-6 mt-10 text-slate-400 text-sm font-medium">
+                                    <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-primary" /> Conversion Focused</span>
+                                    <span className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-primary" /> Fast Performance</span>
+                                </div>
                             </div>
-                            <h1 className="font-display text-5xl md:text-7xl font-bold leading-tight mb-8 bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent animate-slide-up">
-                                Powering Your <br />
-                                <span className="text-white">Digital Growth.</span>
-                            </h1>
-                            <p className="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl leading-relaxed animate-slide-up" style={{ animationDelay: '0.1s' }}>
-                                We build ultra-modern websites and innovative applications that transform businesses. Based in Ho, serving the world.
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-4 animate-slide-up" style={{ animationDelay: '0.2s' }}>
-                                <Link href="/start" className="inline-flex items-center justify-center px-8 py-4 bg-primary hover:bg-blue-600 text-white font-semibold rounded-full transition-all hover:scale-105 group">
-                                    Get Started
-                                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                                </Link>
-                                <Link href="#portfolio" className="inline-flex items-center justify-center px-8 py-4 bg-white/5 border border-white/10 hover:bg-white/10 text-white font-semibold rounded-full transition-all backdrop-blur-sm">
-                                    View Our Work
-                                </Link>
+
+                            {/* Hero Visual */}
+                            <div className="md:w-1/2 w-full relative">
+                                <div className="relative w-full aspect-square md:aspect-[4/3] max-w-lg mx-auto">
+                                    <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent rounded-full blur-2xl transform scale-90"></div>
+                                    <Image
+                                        src="/hero_image.jpg"
+                                        alt="Abstract 3D architectural representation of digital growth and structure"
+                                        fill
+                                        className="object-contain drop-shadow-2xl animate-fade-in"
+                                        priority
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                {/* Who We Are & Promise (Replaces Old Services) */}
-                <section className="py-24 bg-slate-900/50 relative">
-                    <div className="container mx-auto px-6 relative z-10">
-                        <div className="flex flex-col md:flex-row gap-16">
-                            <div className="md:w-1/2">
-                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300 text-xs font-semibold uppercase tracking-wider mb-6">
-                                    Who We Are
+                {/* ===== PROBLEM SECTION (Visual Grid) ===== */}
+                <section className="py-20 md:py-28 bg-white relative border-y border-slate-100">
+                    <div className="container mx-auto px-6 max-w-6xl">
+                        <div className="text-center mb-16 max-w-3xl mx-auto">
+                            <h2 className="font-display text-3xl md:text-4xl font-bold mb-6 text-navy">
+                                Most websites are <span className="text-red-500">invisible liabilities.</span>
+                            </h2>
+                            <p className="text-lg text-slate-600">
+                                If your site isn't clearly guiding people to buy, it's not just sitting there—it's actively repelling your future clients.
+                            </p>
+                        </div>
+
+                        <div className="grid md:grid-cols-3 gap-8">
+                            <div className="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-lg transition-all">
+                                <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-6 text-red-600">
+                                    <Layout className="w-6 h-6" />
                                 </div>
-                                <h2 className="font-display text-3xl md:text-5xl font-bold mb-6">
-                                    More Than Just <br /> Code.
+                                <h3 className="text-xl font-bold text-navy mb-3">Confusing Layouts</h3>
+                                <p className="text-slate-600 leading-relaxed">
+                                    Visitors leave locally within seconds if they can't instantly find what they need. Confusion kills conversion.
+                                </p>
+                            </div>
+                            <div className="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-lg transition-all">
+                                <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-6 text-red-600">
+                                    <Zap className="w-6 h-6" />
+                                </div>
+                                <h3 className="text-xl font-bold text-navy mb-3">Slow Performance</h3>
+                                <p className="text-slate-600 leading-relaxed">
+                                    Every second of load time drops your sales by 20%. Slow sites don't get ranked, and they don't sell.
+                                </p>
+                            </div>
+                            <div className="p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-lg transition-all">
+                                <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-6 text-red-600">
+                                    <Target className="w-6 h-6" />
+                                </div>
+                                <h3 className="text-xl font-bold text-navy mb-3">Weak Messaging</h3>
+                                <p className="text-slate-600 leading-relaxed">
+                                    Vague assertions like "We offer quality services" mean nothing. Your copy needs to cut through the noise.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* ===== SERVICES SECTION (Cards) ===== */}
+                <section className="py-20 md:py-28 bg-slate-50 bg-grid-slate-100">
+                    <div className="container mx-auto px-6 max-w-6xl">
+                        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                            <div className="max-w-2xl">
+                                <h2 className="font-display text-3xl md:text-5xl font-bold mb-4 text-navy">
+                                    We build <span className="text-primary">growth engines.</span>
                                 </h2>
-                                <p className="text-lg text-slate-400 leading-relaxed mb-6">
-                                    Adaze Web Studio is a specialized software consultancy in Ho. We believe in building digital products that don't just look good, but actually work to grow your revenue and efficiency.
+                                <p className="text-lg text-slate-600">
+                                    From high-conversion landing pages to complex web applications.
                                 </p>
-                                <Link href="/about" className="text-primary hover:text-blue-400 font-medium inline-flex items-center">
-                                    Read Our Full Story <ChevronRight className="w-4 h-4 ml-1" />
-                                </Link>
                             </div>
-                            <div className="md:w-1/2">
-                                <div className="p-8 rounded-3xl bg-slate-950 border border-white/10">
-                                    <h3 className="text-2xl font-bold mb-4 font-display text-white">Our Promise</h3>
-                                    <div className="space-y-6">
-                                        <div className="flex gap-4">
-                                            <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center shrink-0">
-                                                <Rocket className="w-5 h-5 text-blue-400" />
-                                            </div>
-                                            <div>
-                                                <h4 className="font-bold text-white mb-1">Impact First</h4>
-                                                <p className="text-sm text-slate-400">We prioritize features that drive real business results, not just vanity metrics.</p>
-                                            </div>
-                                        </div>
-                                        <div className="flex gap-4">
-                                            <div className="w-10 h-10 rounded-full bg-purple-500/10 flex items-center justify-center shrink-0">
-                                                <Code2 className="w-5 h-5 text-purple-400" />
-                                            </div>
-                                            <div>
-                                                <h4 className="font-bold text-white mb-1">Global Quality</h4>
-                                                <p className="text-sm text-slate-400">We code to international standards (Clean Code, CI/CD, Security) right here from Ho.</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <Link href="/services" className="hidden md:inline-flex items-center text-primary hover:text-amber-600 font-bold transition-colors group">
+                                View all services
+                                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                            </Link>
+                        </div>
+
+                        <div className="grid md:grid-cols-3 gap-8">
+                            {/* Service 1 */}
+                            <div className="p-8 rounded-3xl bg-white border border-slate-200 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/5 transition-all group relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl -mr-16 -mt-16 transition-all group-hover:bg-primary/10"></div>
+                                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 relative z-10">
+                                    <Globe className="w-7 h-7 text-primary" />
                                 </div>
+                                <h3 className="text-2xl font-bold text-navy mb-4 font-display relative z-10">Websites</h3>
+                                <p className="text-slate-600 leading-relaxed mb-6 relative z-10">
+                                    Fast, responsive, and SEO-optimized sites designed to turn visitors into paying customers.
+                                </p>
+                                <ul className="space-y-2 text-sm text-slate-500 relative z-10">
+                                    <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-primary" /> Landing Pages</li>
+                                    <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-primary" /> Corporate Sites</li>
+                                    <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-primary" /> E-commerce</li>
+                                </ul>
                             </div>
+
+                            {/* Service 2 */}
+                            <div className="p-8 rounded-3xl bg-white border border-slate-200 hover:border-purple-500/50 hover:shadow-xl hover:shadow-purple-500/5 transition-all group relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/5 rounded-full blur-2xl -mr-16 -mt-16 transition-all group-hover:bg-purple-500/10"></div>
+                                <div className="w-14 h-14 rounded-2xl bg-purple-500/10 flex items-center justify-center mb-8 relative z-10">
+                                    <Code2 className="w-7 h-7 text-purple-600" />
+                                </div>
+                                <h3 className="text-2xl font-bold text-navy mb-4 font-display relative z-10">Web Types</h3>
+                                <p className="text-slate-600 leading-relaxed mb-6 relative z-10">
+                                    Custom software solutions for businesses that have outgrown spreadsheets and basic tools.
+                                </p>
+                                <ul className="space-y-2 text-sm text-slate-500 relative z-10">
+                                    <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-purple-500" /> Client Portals</li>
+                                    <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-purple-500" /> SaaS Platforms</li>
+                                    <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-purple-500" /> Internal Tools</li>
+                                </ul>
+                            </div>
+
+                            {/* Service 3 */}
+                            <div className="p-8 rounded-3xl bg-white border border-slate-200 hover:border-emerald-500/50 hover:shadow-xl hover:shadow-emerald-500/5 transition-all group relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-2xl -mr-16 -mt-16 transition-all group-hover:bg-emerald-500/10"></div>
+                                <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center mb-8 relative z-10">
+                                    <Smartphone className="w-7 h-7 text-emerald-600" />
+                                </div>
+                                <h3 className="text-2xl font-bold text-navy mb-4 font-display relative z-10">Mobile Apps</h3>
+                                <p className="text-slate-600 leading-relaxed mb-6 relative z-10">
+                                    Native iOS and Android applications that provide seamless mobile experiences for your users.
+                                </p>
+                                <ul className="space-y-2 text-sm text-slate-500 relative z-10">
+                                    <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> iOS & Android</li>
+                                    <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> Cross-platform</li>
+                                    <li className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> App Store Launch</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div className="mt-8 text-center md:hidden">
+                            <Link href="/services" className="inline-flex items-center text-primary hover:text-amber-600 font-bold transition-colors group">
+                                View all services
+                                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                            </Link>
                         </div>
                     </div>
                 </section>
 
-
-                {/* Portfolio Section */}
-
-                {/* Our Products Section */}
-                <section className="py-24 relative overflow-hidden">
-                    <div className="container mx-auto px-6">
-                        <div className="mb-12">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
-                                In-House Innovation
-                            </div>
-                            <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">Our Products</h2>
-                            <p className="text-slate-400 max-w-2xl">
-                                Solutions we've built for the world.
+                {/* ===== WORK SECTION (Split Layouts) ===== */}
+                <section id="portfolio" className="py-20 md:py-28 bg-white border-y border-slate-100">
+                    <div className="container mx-auto px-6 max-w-7xl">
+                        <div className="text-center mb-16 max-w-3xl mx-auto">
+                            <h2 className="font-display text-3xl md:text-5xl font-bold mb-6 text-navy">
+                                Proven Results.
+                            </h2>
+                            <p className="text-slate-600 text-lg leading-relaxed">
+                                We help ambitious organizations across Ghana transform their digital presence.
                             </p>
                         </div>
 
-                        <div className="bg-gradient-to-br from-emerald-950/50 to-slate-900 border border-emerald-500/20 rounded-3xl overflow-hidden relative group">
-                            <div className="grid md:grid-cols-2 gap-12 items-center p-8 md:p-12">
-                                <div className="order-2 md:order-1">
-                                    <h3 className="text-3xl font-bold font-display text-white mb-4">YourFlow</h3>
-                                    <p className="text-slate-400 text-lg mb-8 leading-relaxed">
-                                        Take control of your financial future. YourFlow is a comprehensive personal finance app that combines expense tracking, budgeting, and financial education to help you hit your goals.
-                                    </p>
-                                    <div className="flex flex-wrap gap-3 mb-8">
-                                        <span className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium">Mobile App</span>
-                                        <span className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium">FinTech</span>
-                                        <span className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium">Education</span>
-                                    </div>
-                                    <button className="px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold rounded-full transition-all">
-                                        Learn More
-                                    </button>
-                                </div>
-                                <div className="order-1 md:order-2 relative aspect-[16/9] md:aspect-square md:max-h-[400px] bg-white rounded-2xl overflow-hidden border border-white/5 flex items-center justify-center p-8">
-                                    <Image src="/yourflow_logo.png" alt="YourFlow Logo" fill className="object-contain p-8" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Selected Work (Client Projects) */}
-                <section id="portfolio" className="py-24 bg-slate-950">
-                    <div className="container mx-auto px-6">
-                        <div className="flex flex-col md:flex-row justify-between items-end mb-12">
-                            <div className="max-w-xl">
-                                <h2 className="font-display text-3xl md:text-4xl font-bold mb-4">Selected Work</h2>
-                                <p className="text-slate-400">
-                                    Digital solutions crafted for our partners.
-                                </p>
-                            </div>
-                            <Link href="/portfolio" className="hidden md:flex items-center gap-2 text-primary hover:text-white transition-colors font-medium">
-                                View All Projects <ArrowRight className="w-4 h-4" />
-                            </Link>
-                        </div>
-
-                        <div className="grid md:grid-cols-3 gap-6">
-                            {/* Project 1 - Adaze Properties Hub */}
-                            <Link href="https://adazepropertieshub.com" target="_blank" className="group block relative rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50 hover:border-primary/50 transition-all hover:scale-[1.02]">
-                                <div className="aspect-[4/3] bg-white relative flex items-center justify-center p-8">
-                                    <Image src="/adaze_logo.jpg" alt="Adaze Properties Hub" fill className="object-contain p-6" />
-                                    <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-20 transition-opacity" />
-                                </div>
-                                <div className="p-6">
-                                    <h3 className="text-xl font-bold font-display group-hover:text-primary transition-colors mb-2">Adaze Properties Hub</h3>
-                                    <p className="text-slate-400 text-sm mb-4 line-clamp-3">
-                                        A full-service real estate hub offering brokerage, land surveying, architectural design, construction, and investment advisory for litigation-free property acquisition.
-                                    </p>
-                                    <div className="flex flex-wrap gap-2">
-                                        <span className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px] uppercase tracking-wide text-slate-300">Brokerage</span>
-                                        <span className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px] uppercase tracking-wide text-slate-300">Surveying & Mapping</span>
-                                        <span className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px] uppercase tracking-wide text-slate-300">Development</span>
-                                        <span className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px] uppercase tracking-wide text-slate-300">Investment</span>
-                                    </div>
-                                </div>
-                            </Link>
-
-                            {/* Project 2 - VRARED */}
-                            <Link href="https://vrared.org" target="_blank" className="group block relative rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50 hover:border-accent/50 transition-all hover:scale-[1.02]">
-                                <div className="aspect-[4/3] bg-white relative flex items-center justify-center p-8">
-                                    <Image src="/vrared_logo.png" alt="VRARED Logo" fill className="object-contain p-6" />
-                                    <div className="absolute inset-0 bg-accent/10 opacity-0 group-hover:opacity-10 transition-opacity" />
-                                </div>
-                                <div className="p-6">
-                                    <h3 className="text-xl font-bold font-display group-hover:text-accent transition-colors mb-2">VRARED</h3>
-                                    <p className="text-slate-400 text-sm mb-4 line-clamp-2">
-                                        The official regulatory body unifying real estate developers, brokers, and agents in the Volta Region. We champion ethical standards and verify professionals.
-                                    </p>
-                                    <div className="flex flex-wrap gap-2">
-                                        <span className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px] uppercase tracking-wide text-slate-300">Corporate</span>
-                                        <span className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px] uppercase tracking-wide text-slate-300">Membership</span>
-                                        <span className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px] uppercase tracking-wide text-slate-300">Regulatory</span>
-                                    </div>
-                                </div>
-                            </Link>
-
-                            {/* Project 3 - Rhema Estate Premier */}
-                            <div className="group block relative rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50 hover:border-violet-500/50 transition-all hover:scale-[1.02]">
-                                <div className="aspect-[4/3] bg-white relative flex items-center justify-center p-8">
-                                    <Image src="/rhema_logo.jpg" alt="Rhema Premier Estates Logo" fill className="object-contain p-6" />
-                                    <div className="absolute inset-0 bg-violet-500/10 opacity-0 group-hover:opacity-10 transition-opacity" />
-                                </div>
-                                <div className="p-6">
-                                    <h3 className="text-xl font-bold font-display group-hover:text-violet-400 transition-colors mb-2">Rhema Premier Estates</h3>
-                                    <p className="text-slate-400 text-sm mb-4 line-clamp-2">
-                                        Premium real estate development showcase.
-                                    </p>
-                                    <div className="flex flex-wrap gap-2">
-                                        <span className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px] uppercase tracking-wide text-slate-300">Real Estate</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Project 4 - AYECCU */}
-                            <Link href="https://ayecghana.org" target="_blank" className="group block relative rounded-2xl overflow-hidden border border-white/10 bg-slate-900/50 hover:border-emerald-500/50 transition-all hover:scale-[1.02]">
-                                <div className="aspect-[4/3] bg-white relative flex items-center justify-center p-8">
-                                    <Image src="/ayeccu_logo.jpg" alt="AYECCU Logo" fill className="object-contain p-6" />
-                                    <div className="absolute inset-0 bg-emerald-500/10 opacity-0 group-hover:opacity-10 transition-opacity" />
-                                </div>
-                                <div className="p-6">
-                                    <h3 className="text-xl font-bold font-display group-hover:text-emerald-400 transition-colors mb-2">AYECCU</h3>
-                                    <p className="text-slate-400 text-sm mb-4 line-clamp-2">
-                                        Financial platform for entrepreneurs.
-                                    </p>
-                                    <div className="flex flex-wrap gap-2">
-                                        <span className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px] uppercase tracking-wide text-slate-300">Finance</span>
-                                        <span className="px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-[10px] uppercase tracking-wide text-slate-300">Co-operative</span>
-                                    </div>
-                                </div>
-                            </Link>
-                        </div>
-                    </div>
-                </section>
-
-                {/* Why Choose Us */}
-                <section className="py-24 relative overflow-hidden">
-                    <div className="container mx-auto px-6">
-                        <div className="bg-gradient-to-br from-slate-900 to-slate-950 rounded-3xl p-8 md:p-16 border border-white/10 relative">
-                            <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none" />
-
-                            <div className="grid md:grid-cols-2 gap-12 items-center relative z-10">
-                                <div>
-                                    <h2 className="font-display text-3xl md:text-5xl font-bold mb-6">World-Class Quality,<br />Right Here in Ho.</h2>
-                                    <p className="text-slate-400 text-lg mb-8 leading-relaxed">
-                                        You don't need to look to Accra or abroad for premium software development. Adaze Web Studio brings global standards to the Volta Region.
-                                    </p>
-
-                                    <div className="space-y-4">
-                                        {[
-                                            "Ultra-modern, responsive designs",
-                                            "SEO-optimized for maximum visibility",
-                                            "Secure and scalable architecture",
-                                            "Ongoing support and maintenance"
-                                        ].map((item, i) => (
-                                            <div key={i} className="flex items-center gap-3">
-                                                <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0" />
-                                                <span className="text-slate-300">{item}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                                <div className="relative">
-                                    <div className="aspect-square rounded-2xl bg-gradient-to-tr from-slate-800 to-slate-700/50 border border-white/10 p-8 flex flex-col justify-center items-center text-center relative overflow-hidden group">
-                                        <div className="absolute inset-0 bg-grid-slate-700/[0.2] bg-[bottom_1px_center] [mask-image:linear-gradient(to_bottom,transparent,black)]" />
-                                        <div className="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500">
-                                            <Rocket className="w-12 h-12 text-primary" />
+                        <div className="space-y-20 md:space-y-32">
+                            {/* Project 1 - VRARED */}
+                            <div className="grid md:grid-cols-2 gap-12 items-center">
+                                <div className="order-2 md:order-1 relative group">
+                                    <div className="absolute inset-0 bg-primary/20 rounded-3xl rotate-3 scale-95 group-hover:rotate-6 transition-transform -z-10"></div>
+                                    <div className="relative rounded-3xl overflow-hidden border border-slate-200 bg-slate-50 shadow-xl">
+                                        <div className="aspect-[4/3] relative flex items-center justify-center p-12 bg-white">
+                                            <Image src="/vrared_logo.png" alt="VRARED corporate website" fill className="object-contain p-12" />
                                         </div>
-                                        <h3 className="text-2xl font-bold mb-2 relative z-10">Launch Fast</h3>
-                                        <p className="text-slate-400 relative z-10">We deliver high-quality MVPs and websites in record time.</p>
                                     </div>
+                                </div>
+                                <div className="order-1 md:order-2">
+                                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-bold uppercase tracking-wider mb-6">
+                                        Real Estate / Regulatory
+                                    </div>
+                                    <h3 className="text-4xl font-bold font-display text-navy mb-4">VRARED</h3>
+                                    <p className="text-slate-600 text-lg leading-relaxed mb-6">
+                                        The Volta Region Association of Real Estate Developers needed a digital platform to verify members, an MLS for their brokers, LMS for training and build public trust. We built a comprehensive directory system that establishes instantaneous credibility.
+                                    </p>
+                                    <ul className="grid grid-cols-2 gap-4 mb-8">
+                                        <li className="flex items-center gap-3 text-slate-700 font-medium"><CheckCircle2 className="w-5 h-5 text-primary" /> Member Verification</li>
+                                        <li className="flex items-center gap-3 text-slate-700 font-medium"><CheckCircle2 className="w-5 h-5 text-primary" /> Public Directory</li>
+                                        <li className="flex items-center gap-3 text-slate-700 font-medium"><CheckCircle2 className="w-5 h-5 text-primary" /> MLS System</li>
+                                        <li className="flex items-center gap-3 text-slate-700 font-medium"><CheckCircle2 className="w-5 h-5 text-primary" /> Learning Management</li>
+                                        <li className="flex items-center gap-3 text-slate-700 font-medium"><CheckCircle2 className="w-5 h-5 text-primary" /> SEO Optimized</li>
+                                    </ul>
+                                    <a href="https://vrared.org" target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-6 py-3 bg-navy text-white rounded-full hover:bg-slate-800 transition-colors font-semibold">
+                                        View Live Site <ArrowRight className="w-4 h-4 ml-2" />
+                                    </a>
+                                </div>
+                            </div>
+
+                            {/* Project 2 - AYECCU */}
+                            <div className="grid md:grid-cols-2 gap-12 items-center">
+                                <div className="order-1 md:order-2 relative group">
+                                    <div className="absolute inset-0 bg-emerald-500/20 rounded-3xl -rotate-3 scale-95 group-hover:-rotate-6 transition-transform -z-10"></div>
+                                    <div className="relative rounded-3xl overflow-hidden border border-slate-200 bg-slate-50 shadow-xl">
+                                        <div className="aspect-[4/3] relative flex items-center justify-center p-12 bg-white">
+                                            <Image src="/ayeccu_logo.jpg" alt="AYECCU financial platform" fill className="object-contain p-12" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="order-2 md:order-1">
+                                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold uppercase tracking-wider mb-6">
+                                        Finance / Cooperative
+                                    </div>
+                                    <h3 className="text-4xl font-bold font-display text-navy mb-4">AYECCU</h3>
+                                    <p className="text-slate-600 text-lg leading-relaxed mb-6">
+                                        Asogli Youth Entrepreneurs needed a comprehensive management system to run the credit union's operations. We created a secure, professional financial platform that digitizes member records and sets a new standard for trust.
+                                    </p>
+                                    <ul className="grid grid-cols-2 gap-4 mb-8">
+                                        <li className="flex items-center gap-3 text-slate-700 font-medium"><CheckCircle2 className="w-5 h-5 text-emerald-500" /> Operations Management</li>
+                                        <li className="flex items-center gap-3 text-slate-700 font-medium"><CheckCircle2 className="w-5 h-5 text-emerald-500" /> Mobile First</li>
+                                        <li className="flex items-center gap-3 text-slate-700 font-medium"><CheckCircle2 className="w-5 h-5 text-emerald-500" /> Lead Generation</li>
+                                    </ul>
+                                    <a href="https://ayecghana.org" target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-6 py-3 bg-navy text-white rounded-full hover:bg-slate-800 transition-colors font-semibold">
+                                        View Live Site <ArrowRight className="w-4 h-4 ml-2" />
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </section>
 
-                {/* CTA Section */}
-                <section id="contact" className="py-24">
-                    <div className="container mx-auto px-6 text-center">
-                        <h2 className="font-display text-4xl md:text-6xl font-bold mb-8 max-w-4xl mx-auto">Ready to power up your growth?</h2>
-                        <p className="text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
-                            Let's build something amazing together. Book a free consultation today.
-                        </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Link href="mailto:enquiries@adazewebstudio.com" className="px-8 py-4 bg-primary hover:bg-blue-600 text-white font-semibold rounded-full transition-all hover:scale-105">
-                                Email Us
-                            </Link>
-                            <Link href="tel:+233506562811" className="px-8 py-4 bg-white/5 border border-white/10 hover:bg-white/10 text-white font-semibold rounded-full transition-all backdrop-blur-sm">
-                                Call +233 50 656 2811
+                        <div className="mt-20 text-center">
+                            <Link href="/portfolio" className="inline-flex items-center px-8 py-4 bg-white border-2 border-slate-200 text-navy font-bold rounded-full hover:border-navy hover:bg-navy hover:text-white transition-all group">
+                                View Full Portfolio <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                             </Link>
                         </div>
                     </div>
                 </section>
 
-            </main>
+                {/* ===== FINAL CTA SECTION ===== */}
+                <section className="py-24 md:py-32 relative bg-navy overflow-hidden">
+                    <div className="absolute inset-0 bg-grid-slate-900 opacity-20"></div>
+                    <div className="container mx-auto px-6 max-w-4xl text-center relative z-10">
+                        <h2 className="font-display text-3xl md:text-5xl font-bold mb-6 text-white leading-tight">
+                            Ready to stop losing customers?
+                        </h2>
+                        <p className="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
+                            A better website is the highest ROI investment you can make this year. Let's build it.
+                        </p>
+                        <Link href="/start" className="inline-flex items-center justify-center px-10 py-5 bg-primary hover:bg-amber-400 text-navy text-xl font-bold rounded-full transition-all hover:scale-105 shadow-xl shadow-primary/30 group">
+                            Book a Free Consultation
+                            <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                    </div>
+                </section>
+
+            </main >
             <Footer />
         </>
     )

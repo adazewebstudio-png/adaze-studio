@@ -5,14 +5,14 @@ import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { supabase } from '@/lib/supabase'
-import { UserPlus, ArrowRight, CheckCircle } from 'lucide-react'
+import { ArrowRight, CheckCircle, Star } from 'lucide-react'
 
 export default function AffiliateSignup() {
     const router = useRouter()
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
     const [success, setSuccess] = useState(false)
-    const [paymentMethod, setPaymentMethod] = useState('momo')
+
 
     const generateReferralCode = (name: string) => {
         const cleanName = name.replace(/\s+/g, '').toUpperCase().slice(0, 4)
@@ -30,14 +30,6 @@ export default function AffiliateSignup() {
         const password = formData.get('password') as string
         const fullName = formData.get('fullName') as string
         const phone = formData.get('phone') as string
-
-        // Payment info
-        const payment_method = formData.get('payment_method') as string
-        const momo_provider = formData.get('momo_provider') as string
-        const momo_number = formData.get('momo_number') as string
-        const bank_name = formData.get('bank_name') as string
-        const bank_account_number = formData.get('bank_account_number') as string
-        const bank_account_name = formData.get('bank_account_name') as string
 
         try {
             // Check if email already exists
@@ -76,12 +68,6 @@ export default function AffiliateSignup() {
                     total_earnings: 0,
                     total_paid: 0,
                     is_active: true,
-                    payment_method,
-                    momo_provider: payment_method === 'momo' ? momo_provider : null,
-                    momo_number: payment_method === 'momo' ? momo_number : null,
-                    bank_name: payment_method === 'bank' ? bank_name : null,
-                    bank_account_number: payment_method === 'bank' ? bank_account_number : null,
-                    bank_account_name: payment_method === 'bank' ? bank_account_name : null,
                 })
 
             if (insertError) throw insertError
@@ -96,19 +82,24 @@ export default function AffiliateSignup() {
 
     if (success) {
         return (
-            <main className="bg-slate-950 min-h-screen">
+            <main className="bg-slate-50 min-h-screen">
                 <Navbar />
                 <div className="container mx-auto px-6 py-32 max-w-lg">
-                    <div className="text-center p-10 rounded-3xl bg-slate-900 border border-emerald-500/20">
-                        <div className="w-16 h-16 rounded-full bg-emerald-500/20 flex items-center justify-center mx-auto mb-6">
-                            <CheckCircle className="w-8 h-8 text-emerald-400" />
+                    <div className="text-center p-10 rounded-[2rem] bg-white border border-emerald-100 shadow-xl shadow-emerald-100/50">
+                        <div className="w-20 h-20 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-6 animate-in zoom-in duration-500">
+                            <CheckCircle className="w-10 h-10 text-emerald-500" />
                         </div>
-                        <h1 className="text-2xl font-bold text-white mb-4">Welcome to the Team!</h1>
-                        <p className="text-slate-400 mb-6">
-                            Your affiliate account has been created. Check your email to verify your account, then login to access your dashboard.
+                        <h1 className="text-3xl font-bold text-navy mb-4 font-display">Welcome to the Team!</h1>
+                        <p className="text-slate-600 mb-4 leading-relaxed text-lg">
+                            Your affiliate account has been created successfully!
                         </p>
-                        <Link href="/affiliate/login" className="inline-flex items-center px-6 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold rounded-full transition-all">
-                            Go to Login <ArrowRight className="ml-2 w-4 h-4" />
+                        <div className="bg-blue-50 border border-blue-100 rounded-xl p-4 mb-8">
+                            <p className="text-blue-700 text-sm font-medium">
+                                📧 Please check your email inbox and click the verification link to activate your account.
+                            </p>
+                        </div>
+                        <Link href="/affiliate/login" className="inline-flex items-center px-8 py-4 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-lg rounded-full transition-all shadow-lg shadow-emerald-500/20 hover:scale-105">
+                            Go to Login <ArrowRight className="ml-2 w-5 h-5" />
                         </Link>
                     </div>
                 </div>
@@ -118,212 +109,149 @@ export default function AffiliateSignup() {
     }
 
     return (
-        <main className="bg-slate-950 min-h-screen">
+        <main className="bg-white min-h-screen">
             <Navbar />
 
-            <div className="container mx-auto px-6 py-32 max-w-lg">
-                <div className="text-center mb-10">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-4">
-                        Partner Program
+            <div className="min-h-screen flex pt-20">
+                {/* Left Side: Visual & Context (Hidden on Mobile) */}
+                <div className="hidden lg:flex w-5/12 bg-navy relative overflow-hidden flex-col justify-between p-12 fixed h-full">
+                    <div className="absolute inset-0 bg-grid-white/[0.05]"></div>
+                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-emerald-500/20 rounded-full blur-3xl -mr-32 -mt-32"></div>
+                    <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-3xl -ml-32 -mb-32"></div>
+
+                    <div className="relative z-10 mt-12">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-6">
+                            Partner Program
+                        </div>
+                        <h1 className="font-display text-5xl font-bold text-white leading-tight mb-6">
+                            Turn your network into <span className="text-emerald-400">revenue.</span>
+                        </h1>
+                        <p className="text-slate-300 text-lg leading-relaxed max-w-md">
+                            Join hundreds of partners earning consistent commissions by referring businesses to Adaze Web Studio.
+                        </p>
                     </div>
-                    <h1 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
-                        Join Our Affiliate Program
-                    </h1>
-                    <p className="text-slate-400">
-                        Earn 20% commission on every client you refer. Start earning today!
-                    </p>
-                </div>
 
-                <div className="bg-slate-900/50 p-8 rounded-3xl border border-white/10">
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                        {error && (
-                            <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
-                                {error}
-                            </div>
-                        )}
-
-                        {/* Personal Details */}
-                        <div className="space-y-4">
-                            <h3 className="text-lg font-semibold text-white">Personal Details</h3>
-
-                            <div className="space-y-2">
-                                <label htmlFor="fullName" className="text-sm font-medium text-slate-300">Full Name</label>
-                                <input
-                                    type="text"
-                                    id="fullName"
-                                    name="fullName"
-                                    required
-                                    placeholder="John Doe"
-                                    className="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all"
-                                />
-                            </div>
-
-                            <div className="space-y-2">
-                                <label htmlFor="email" className="text-sm font-medium text-slate-300">Email Address</label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    required
-                                    placeholder="john@example.com"
-                                    className="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all"
-                                />
-                            </div>
-
-                            <div className="space-y-2">
-                                <label htmlFor="phone" className="text-sm font-medium text-slate-300">Phone / WhatsApp</label>
-                                <input
-                                    type="tel"
-                                    id="phone"
-                                    name="phone"
-                                    required
-                                    placeholder="+233 ..."
-                                    className="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all"
-                                />
-                            </div>
-
-                            <div className="space-y-2">
-                                <label htmlFor="password" className="text-sm font-medium text-slate-300">Create Password</label>
-                                <input
-                                    type="password"
-                                    id="password"
-                                    name="password"
-                                    required
-                                    minLength={6}
-                                    placeholder="Min 6 characters"
-                                    className="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all"
-                                />
+                    <div className="relative z-10 bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6">
+                        <div className="flex text-amber-400 mb-4">
+                            <Star className="w-5 h-5 fill-current" />
+                            <Star className="w-5 h-5 fill-current" />
+                            <Star className="w-5 h-5 fill-current" />
+                            <Star className="w-5 h-5 fill-current" />
+                            <Star className="w-5 h-5 fill-current" />
+                        </div>
+                        <p className="text-slate-200 italic mb-4">
+                            "The easiest partnership I've ever had. I assume the role of 'Tech Consultant' for my clients, Adaze does the work, and I get paid. Brilliant."
+                        </p>
+                        <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-blue-500"></div>
+                            <div>
+                                <p className="text-white font-bold text-sm">Michael K.</p>
+                                <p className="text-slate-400 text-xs">Digital Marketer</p>
                             </div>
                         </div>
+                    </div>
+                </div>
 
-                        {/* Payment Details */}
-                        <div className="space-y-4 pt-4 border-t border-white/10">
-                            <h3 className="text-lg font-semibold text-white">Payment Details</h3>
-                            <p className="text-sm text-slate-400">How would you like to receive your commissions?</p>
+                {/* Right Side: Form Scrollable Area */}
+                <div className="w-full lg:w-7/12 lg:ml-auto bg-white flex flex-col justify-center py-12 px-6 lg:px-20 xl:px-32">
+                    <div className="max-w-xl mx-auto w-full">
+                        <div className="mb-10 text-center lg:text-left">
+                            <h2 className="text-3xl font-bold text-navy mb-2 font-display">Create your account</h2>
+                            <p className="text-slate-500">
+                                Already have an account? {' '}
+                                <Link href="/affiliate/login" className="text-emerald-600 font-bold hover:underline">
+                                    Log in
+                                </Link>
+                            </p>
+                        </div>
 
-                            <div className="space-y-2">
-                                <label className="text-sm font-medium text-slate-300">Payment Method</label>
-                                <div className="grid grid-cols-2 gap-3">
-                                    <button
-                                        type="button"
-                                        onClick={() => setPaymentMethod('momo')}
-                                        className={`p-4 rounded-xl border text-center transition-all ${paymentMethod === 'momo'
-                                                ? 'bg-emerald-500/10 border-emerald-500/50 text-emerald-400'
-                                                : 'bg-slate-950 border-white/10 text-slate-400 hover:border-white/20'
-                                            }`}
-                                    >
-                                        <span className="font-semibold">Mobile Money</span>
-                                        <p className="text-xs mt-1 opacity-70">MTN, Vodafone, AirtelTigo</p>
-                                    </button>
-                                    <button
-                                        type="button"
-                                        onClick={() => setPaymentMethod('bank')}
-                                        className={`p-4 rounded-xl border text-center transition-all ${paymentMethod === 'bank'
-                                                ? 'bg-emerald-500/10 border-emerald-500/50 text-emerald-400'
-                                                : 'bg-slate-950 border-white/10 text-slate-400 hover:border-white/20'
-                                            }`}
-                                    >
-                                        <span className="font-semibold">Bank Transfer</span>
-                                        <p className="text-xs mt-1 opacity-70">Direct to your account</p>
-                                    </button>
+                        <form onSubmit={handleSubmit} className="space-y-8">
+                            {error && (
+                                <div className="p-4 rounded-xl bg-red-50 border border-red-100 text-red-600 text-sm flex items-start gap-3">
+                                    <div className="w-5 h-5 rounded-full bg-red-100 flex items-center justify-center shrink-0 mt-0.5">!</div>
+                                    {error}
                                 </div>
-                                <input type="hidden" name="payment_method" value={paymentMethod} />
-                            </div>
+                            )}
 
-                            {paymentMethod === 'momo' && (
-                                <>
-                                    <div className="space-y-2">
-                                        <label htmlFor="momo_provider" className="text-sm font-medium text-slate-300">Mobile Money Provider</label>
-                                        <select
-                                            id="momo_provider"
-                                            name="momo_provider"
+                            {/* Section: Personal Info */}
+                            <div className="space-y-5">
+                                <h3 className="text-lg font-bold text-navy border-b border-slate-100 pb-2">Personal Details</h3>
+
+                                <div className="grid md:grid-cols-2 gap-5">
+                                    <div className="space-y-1.5">
+                                        <label htmlFor="fullName" className="text-sm font-bold text-navy">Full Name</label>
+                                        <input
+                                            type="text"
+                                            id="fullName"
+                                            name="fullName"
                                             required
-                                            className="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all"
-                                        >
-                                            <option value="">Select Provider...</option>
-                                            <option value="MTN">MTN Mobile Money</option>
-                                            <option value="Vodafone">Vodafone Cash</option>
-                                            <option value="AirtelTigo">AirtelTigo Money</option>
-                                        </select>
+                                            placeholder="John Doe"
+                                            className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-navy placeholder:text-slate-400 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all font-medium"
+                                        />
                                     </div>
-                                    <div className="space-y-2">
-                                        <label htmlFor="momo_number" className="text-sm font-medium text-slate-300">Mobile Money Number</label>
+
+                                    <div className="space-y-1.5">
+                                        <label htmlFor="phone" className="text-sm font-bold text-navy">Phone / WhatsApp</label>
                                         <input
                                             type="tel"
-                                            id="momo_number"
-                                            name="momo_number"
+                                            id="phone"
+                                            name="phone"
                                             required
-                                            placeholder="0XX XXX XXXX"
-                                            className="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all"
+                                            placeholder="+233 ..."
+                                            className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-navy placeholder:text-slate-400 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all font-medium"
                                         />
                                     </div>
-                                </>
-                            )}
+                                </div>
 
-                            {paymentMethod === 'bank' && (
-                                <>
-                                    <div className="space-y-2">
-                                        <label htmlFor="bank_name" className="text-sm font-medium text-slate-300">Bank Name</label>
-                                        <input
-                                            type="text"
-                                            id="bank_name"
-                                            name="bank_name"
-                                            required
-                                            placeholder="e.g., GCB Bank, Ecobank"
-                                            className="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all"
-                                        />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <label htmlFor="bank_account_name" className="text-sm font-medium text-slate-300">Account Name</label>
-                                        <input
-                                            type="text"
-                                            id="bank_account_name"
-                                            name="bank_account_name"
-                                            required
-                                            placeholder="Name on account"
-                                            className="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all"
-                                        />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <label htmlFor="bank_account_number" className="text-sm font-medium text-slate-300">Account Number</label>
-                                        <input
-                                            type="text"
-                                            id="bank_account_number"
-                                            name="bank_account_number"
-                                            required
-                                            placeholder="Your account number"
-                                            className="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-slate-600 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all"
-                                        />
-                                    </div>
-                                </>
-                            )}
-                        </div>
+                                <div className="space-y-1.5">
+                                    <label htmlFor="email" className="text-sm font-bold text-navy">Email Address</label>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        required
+                                        placeholder="john@example.com"
+                                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-navy placeholder:text-slate-400 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all font-medium"
+                                    />
+                                </div>
 
-                        <button
-                            type="submit"
-                            disabled={loading}
-                            className="w-full py-4 bg-emerald-500 hover:bg-emerald-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold rounded-xl transition-all flex items-center justify-center gap-2"
-                        >
-                            {loading ? (
-                                <span>Creating Account...</span>
-                            ) : (
-                                <>
-                                    <UserPlus className="w-5 h-5" />
-                                    Create Affiliate Account
-                                </>
-                            )}
-                        </button>
+                                <div className="space-y-1.5">
+                                    <label htmlFor="password" className="text-sm font-bold text-navy">Password</label>
+                                    <input
+                                        type="password"
+                                        id="password"
+                                        name="password"
+                                        required
+                                        minLength={6}
+                                        placeholder="Min 6 characters"
+                                        className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-navy placeholder:text-slate-400 focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-all font-medium"
+                                    />
+                                </div>
+                            </div>
 
-                        <p className="text-center text-sm text-slate-500">
-                            Already have an account?{' '}
-                            <Link href="/affiliate/login" className="text-emerald-400 hover:underline">
-                                Login here
-                            </Link>
-                        </p>
-                    </form>
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                className="w-full py-4 bg-emerald-500 hover:bg-emerald-600 disabled:opacity-70 disabled:cursor-not-allowed text-white font-bold text-lg rounded-xl transition-all flex items-center justify-center gap-2 shadow-xl shadow-emerald-500/20 hover:scale-[1.01]"
+                            >
+                                {loading ? (
+                                    <span>Processing...</span>
+                                ) : (
+                                    <>
+                                        Create Account <ArrowRight className="w-5 h-5 ml-1" />
+                                    </>
+                                )}
+                            </button>
+
+
+
+                            <p className="text-center text-xs text-slate-400 mt-4">
+                                By joining, you agree to our Affiliate Terms of Service.
+                            </p>
+                        </form>
+                    </div>
                 </div>
             </div>
-
             <Footer />
         </main>
     )

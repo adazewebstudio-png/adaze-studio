@@ -1,8 +1,113 @@
+// Main service categories shown on the Services page
+export const serviceCategories = [
+    {
+        id: "website",
+        name: "Website",
+        tagline: "Your Digital Storefront",
+        description: "From portfolios to e-commerce stores, we build stunning websites that convert visitors into customers.",
+        longDescription: "Whether you're a freelancer showcasing your work, a small business establishing credibility, or a real estate agency managing hundreds of listings — we have a website solution tailored for you. Our websites are fast, secure, mobile-friendly, and optimized for search engines.",
+        icon: "Globe",
+        color: "blue",
+        idealFor: "Freelancers, Small Businesses, Real Estate, E-Commerce",
+        turnaround: "1-4 Weeks",
+        subPackages: [
+            { name: "Freelancers & Creatives", description: "Single-page portfolio sites for photographers, artists, and personal brands." },
+            { name: "Small Business Starter", description: "5-page professional website with SEO, Google Maps, and contact forms." },
+            { name: "Real Estate Agent", description: "Property listing galleries with WhatsApp inquiry and mobile optimization." },
+            { name: "Real Estate Company", description: "Corporate presence with project showcases and team sections." },
+            { name: "Real Estate Agency Pro", description: "Advanced search filters, agent portals, and lead capture CRM." },
+            { name: "Pro E-Commerce", description: "Full online store with payment gateway, inventory, and order tracking." },
+        ],
+        features: [
+            "Responsive Mobile-First Design",
+            "SEO Optimization",
+            "Fast Loading Speed",
+            "SSL Security Certificate",
+            "Content Management System",
+            "Analytics Integration",
+        ]
+    },
+    {
+        id: "web-application",
+        name: "Web Application",
+        tagline: "Software That Works For You",
+        description: "Custom web applications, SaaS platforms, and internal tools built to automate and scale your operations.",
+        longDescription: "Need more than a website? We engineer robust, scalable web applications that solve real business problems. From membership portals to inventory systems, from booking platforms to full SaaS products — we turn your vision into working software.",
+        icon: "Code2",
+        color: "purple",
+        idealFor: "Startups, Corporations, FinTech, Institutions",
+        turnaround: "4-12 Weeks",
+        subPackages: [
+            { name: "Custom SAAS Platform", description: "Build your own software-as-a-service product from the ground up." },
+            { name: "Business Portal", description: "Member/client portals with secure login and dashboards." },
+            { name: "Internal Tools", description: "Inventory, booking, or workflow automation systems for your team." },
+            { name: "API Development", description: "Backend systems that connect your apps and third-party services." },
+        ],
+        features: [
+            "Custom Functionality",
+            "Database Architecture",
+            "User Authentication",
+            "API Integrations",
+            "Admin Dashboard",
+            "Scalable Infrastructure",
+        ]
+    },
+    {
+        id: "mobile-app",
+        name: "Mobile App",
+        tagline: "In Every Pocket",
+        description: "Native and cross-platform mobile applications for iOS and Android that your users will love.",
+        longDescription: "Reach your customers where they spend most of their time — on their phones. We design and develop mobile applications that are intuitive, performant, and beautiful. Whether you need a customer-facing app or an internal tool, we deliver apps that work flawlessly.",
+        icon: "Smartphone",
+        color: "emerald",
+        idealFor: "Consumer Brands, Startups, Service Businesses",
+        turnaround: "6-16 Weeks",
+        subPackages: [
+            { name: "iOS App", description: "Native application for Apple devices (iPhone, iPad)." },
+            { name: "Android App", description: "Native application for Android phones and tablets." },
+            { name: "Cross-Platform App", description: "Single codebase that runs on both iOS and Android." },
+        ],
+        features: [
+            "Intuitive UX Design",
+            "Push Notifications",
+            "Offline Functionality",
+            "App Store Submission",
+            "Analytics & Crash Reporting",
+            "Ongoing Maintenance",
+        ]
+    },
+    {
+        id: "website-mobile-bundle",
+        name: "Website + Mobile App",
+        tagline: "Complete Digital Presence",
+        description: "The ultimate package: a professional website AND a mobile app, designed to work together seamlessly.",
+        longDescription: "Why choose one when you can have both? This bundled offering gives you a cohesive digital presence across web and mobile. We design both platforms with consistent branding, shared backend systems, and a unified user experience — at a better value than buying separately.",
+        icon: "Layers",
+        color: "amber",
+        idealFor: "Growing Businesses, Startups, Enterprises",
+        turnaround: "8-20 Weeks",
+        subPackages: [
+            { name: "Starter Bundle", description: "Business website + basic mobile app with core features." },
+            { name: "Growth Bundle", description: "E-commerce or advanced website + feature-rich mobile app." },
+            { name: "Enterprise Bundle", description: "Custom web application + full-featured mobile apps for iOS & Android." },
+        ],
+        features: [
+            "Unified Branding",
+            "Shared Backend/Database",
+            "Cross-Platform Sync",
+            "Priority Support",
+            "Discounted Bundle Pricing",
+            "Single Project Manager",
+        ]
+    },
+]
+
+// Keep old packages for backward compatibility with existing detail pages
 export const packages = [
     {
         id: "freelancers-creatives",
         name: "Freelancers & Creatives",
-        price: "GH₵ 600 - 1,000",
+        price: "Custom Quote",
         description: "For photographers, artists, and personal brands.",
         longDescription: "Stand out from the crowd with a stunning personal portfolio. We create a showcase that highlights your best work, connects with your audience, and builds your personal brand identity online.",
         features: [
@@ -18,7 +123,7 @@ export const packages = [
     {
         id: "small-business-starter",
         name: "Small Business Starter",
-        price: "GH₵ 1,500",
+        price: "Custom Quote",
         description: "Essential professional presence for shops and services.",
         longDescription: "Get your business online with a credible, professional website. We focus on clear information, local SEO to help customers find you, and a design that builds trust immediately.",
         features: [
@@ -30,70 +135,6 @@ export const packages = [
         ],
         idealFor: "Shops, Restaurants, Salons, Mechanics",
         turnaround: "1-2 Weeks"
-    },
-    {
-        id: "real-estate-agent",
-        name: "Real Estate Agent",
-        price: "GH₵ 2,000",
-        description: "Perfect for individual agents showcasing their listings.",
-        longDescription: "A dedicated platform for you to display your properties. Stop relying solely on social media and give your clients a professional place to view your listings with high-quality galleries.",
-        features: [
-            "Property Listing Gallery",
-            "Agent Bio Section",
-            "WhatsApp Inquiry Button",
-            "Mobile Optimized",
-            "Simple Admin Panel"
-        ],
-        idealFor: "Independent Real Estate Agents",
-        turnaround: "2 Weeks"
-    },
-    {
-        id: "real-estate-company",
-        name: "Real Estate Company",
-        price: "GH₵ 3,000",
-        description: "Showcase your company brand and property sites simply.",
-        longDescription: "Establish your firm as a market leader. This package offers a robust corporate presence with advanced gallery features to showcase land and housing projects effectively.",
-        features: [
-            "Professional Company Website",
-            "Simple Property Gallery",
-            "Site/Land Showcase Page",
-            "About & Team Section",
-            "Direct Inquiry Forms"
-        ],
-        idealFor: "Real Estate Developers, Agencies",
-        turnaround: "2-3 Weeks"
-    },
-    {
-        id: "real-estate-agency-pro",
-        name: "Real Estate Agency Pro",
-        price: "GH₵ 5,000",
-        description: "Full-scale platform for agencies with multiple agents.",
-        longDescription: "A powerhouse platform for growing agencies. Manage multiple agents, advanced property search filtering, and capture leads directly into a CRM-like backend.",
-        features: [
-            "Advanced Search Filters",
-            "Map View Integration",
-            "Member/Agent Portals",
-            "Lead Capture CRM",
-            "Blog & News Section"
-        ],
-        idealFor: "Large Agencies, Property Management Firms",
-        turnaround: "3-4 Weeks"
-    },
-    {
-        id: "pro-ecommerce",
-        name: "Pro E-Commerce",
-        price: "GH₵ 2,500 - 4,000",
-        description: "Sell products and accept payments 24/7.",
-        longDescription: "Turn your business into a 24/7 sales machine. We build secure, easy-to-manage online stores with payment integration (Paystack/Hubtel) so you can sell while you sleep.",
-        features: [
-            "Online Store Functionality",
-            "Payment Gateway",
-            "Inventory Management",
-            "Customer Accounts",
-            "Order Tracking"
-        ],
-        idealFor: "Retailers, Fashion Brands, Electronics Stores",
-        turnaround: "3-4 Weeks"
     },
     {
         id: "enterprise-custom",
@@ -109,6 +150,6 @@ export const packages = [
             "Dedicated Project Manager"
         ],
         idealFor: "Startups, Large Corporations, FinTech",
-        turnaround: "Multiplier Indefinite"
+        turnaround: "Variable"
     }
 ]

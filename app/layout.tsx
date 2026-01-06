@@ -8,11 +8,11 @@ const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
 
 export const metadata: Metadata = {
     title: {
-        default: 'Adaze Web Studio | Powering Your Growth',
+        default: 'Adaze Web Studio | Web Design & App Development in Ho, Volta Region',
         template: '%s | Adaze Web Studio',
     },
-    description: 'Premier software development agency in Ho, Ghana. We build ultra-modern websites for small businesses and scalable apps for public use. Expert Web & Mobile App Developers.',
-    keywords: ['Software Company Ho', 'Web Design Ghana', 'App Development Volta Region', 'Adaze Web Studio', 'Website Builders in Ho', 'Tech Agency Ghana'],
+    description: 'Premier software development agency in Ho, Volta Region, Ghana. We build fast, modern websites and mobile apps that help businesses attract more customers and grow revenue. Trusted by VRARED, AYECCU, and more.',
+    keywords: ['Web Design Ho Ghana', 'Software Company Volta Region', 'App Development Ho', 'Website Developer in Ho', 'Mobile App Developer Ghana', 'Web Design Volta Region', 'Adaze Web Studio', 'Tech Agency Ho', 'E-commerce Website Ghana', 'Business Website Ho'],
     authors: [{ name: 'Adaze Web Studio' }],
     creator: 'Adaze Web Studio',
     publisher: 'Adaze Web Studio',
@@ -50,8 +50,8 @@ export const metadata: Metadata = {
         },
     },
     icons: {
-        icon: '/logo.png',
-        apple: '/logo.png',
+        icon: '/favicon.png',
+        apple: '/favicon.png',
     },
 }
 
@@ -65,6 +65,10 @@ export default function RootLayout({
     return (
         <html lang="en" className={clsx(inter.variable, outfit.variable, "scroll-smooth")} suppressHydrationWarning>
             <body className="bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary">
+                {/* Skip to Content - Accessibility */}
+                <a href="#main-content" className="skip-to-content">
+                    Skip to main content
+                </a>
                 <JsonLd />
                 {children}
                 <div className="fixed inset-0 z-[-1] pointer-events-none">

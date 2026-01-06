@@ -228,7 +228,7 @@ export default function AdminDashboard() {
                         <div className="flex items-center justify-between">
                             <div>
                                 <h1 className="text-xl font-bold text-white">Admin Panel</h1>
-                                <p className="text-sm text-blue-400">Affiliate Management</p>
+                                <p className="text-sm text-amber-400">Affiliate Management</p>
                             </div>
                             <button onClick={() => setSidebarOpen(false)} className="lg:hidden text-slate-400">
                                 <X className="w-6 h-6" />
@@ -240,7 +240,7 @@ export default function AdminDashboard() {
                         <button
                             onClick={() => setActiveTab('affiliates')}
                             className={`flex items-center gap-3 w-full px-4 py-3 rounded-xl text-sm font-medium transition-all ${activeTab === 'affiliates'
-                                    ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20'
+                                    ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
                                     : 'text-slate-400 hover:text-white hover:bg-white/5'
                                 }`}
                         >
@@ -250,7 +250,7 @@ export default function AdminDashboard() {
                         <button
                             onClick={() => setActiveTab('referrals')}
                             className={`flex items-center gap-3 w-full px-4 py-3 rounded-xl text-sm font-medium transition-all ${activeTab === 'referrals'
-                                    ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20'
+                                    ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
                                     : 'text-slate-400 hover:text-white hover:bg-white/5'
                                 }`}
                         >
@@ -260,7 +260,7 @@ export default function AdminDashboard() {
                         <button
                             onClick={() => setActiveTab('payouts')}
                             className={`flex items-center justify-between w-full px-4 py-3 rounded-xl text-sm font-medium transition-all ${activeTab === 'payouts'
-                                    ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20'
+                                    ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
                                     : 'text-slate-400 hover:text-white hover:bg-white/5'
                                 }`}
                         >
@@ -308,7 +308,7 @@ export default function AdminDashboard() {
                                 placeholder="Search..."
                                 value={searchQuery}
                                 onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full pl-10 pr-4 py-2 bg-slate-950 border border-white/10 rounded-lg text-white placeholder:text-slate-500 focus:outline-none focus:border-blue-500/50"
+                                className="w-full pl-10 pr-4 py-2 bg-slate-950 border border-white/10 rounded-lg text-white placeholder:text-slate-500 focus:outline-none focus:border-amber-500/50"
                             />
                         </div>
                     </div>
@@ -316,7 +316,7 @@ export default function AdminDashboard() {
                     {activeTab === 'referrals' && (
                         <button
                             onClick={() => setShowAddReferral(true)}
-                            className="flex items-center gap-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition-all"
+                            className="flex items-center gap-2 px-4 py-2 bg-amber-500 hover:bg-amber-500 text-white font-semibold rounded-lg transition-all"
                         >
                             <Plus className="w-4 h-4" />
                             Add Referral
@@ -490,7 +490,7 @@ export default function AdminDashboard() {
                                                             <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold ${payout.status === 'paid'
                                                                     ? 'bg-emerald-500/10 text-emerald-400'
                                                                     : payout.status === 'approved'
-                                                                        ? 'bg-blue-500/10 text-blue-400'
+                                                                        ? 'bg-amber-500/10 text-amber-400'
                                                                         : payout.status === 'rejected'
                                                                             ? 'bg-red-500/10 text-red-400'
                                                                             : 'bg-yellow-500/10 text-yellow-400'
@@ -508,7 +508,7 @@ export default function AdminDashboard() {
                                                                         <button
                                                                             onClick={() => handlePayoutAction(payout.id, 'approve')}
                                                                             disabled={processingPayout === payout.id}
-                                                                            className="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-lg text-xs font-semibold hover:bg-blue-500/20 transition-all disabled:opacity-50"
+                                                                            className="px-3 py-1 bg-amber-500/10 text-amber-400 rounded-lg text-xs font-semibold hover:bg-amber-500/20 transition-all disabled:opacity-50"
                                                                         >
                                                                             Approve
                                                                         </button>
@@ -563,7 +563,7 @@ export default function AdminDashboard() {
                                 <select
                                     name="affiliate_id"
                                     required
-                                    className="w-full bg-slate-950 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500/50"
+                                    className="w-full bg-slate-950 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-amber-500/50"
                                 >
                                     <option value="">Select Affiliate...</option>
                                     {affiliates.map(a => (
@@ -578,7 +578,7 @@ export default function AdminDashboard() {
                                         type="text"
                                         name="client_name"
                                         required
-                                        className="w-full bg-slate-950 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500/50"
+                                        className="w-full bg-slate-950 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-amber-500/50"
                                     />
                                 </div>
                                 <div>
@@ -587,7 +587,7 @@ export default function AdminDashboard() {
                                         type="email"
                                         name="client_email"
                                         required
-                                        className="w-full bg-slate-950 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500/50"
+                                        className="w-full bg-slate-950 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-amber-500/50"
                                     />
                                 </div>
                             </div>
@@ -597,7 +597,7 @@ export default function AdminDashboard() {
                                     <select
                                         name="project_type"
                                         required
-                                        className="w-full bg-slate-950 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500/50"
+                                        className="w-full bg-slate-950 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-amber-500/50"
                                     >
                                         <option value="Website Design">Website Design</option>
                                         <option value="Web Application">Web Application</option>
@@ -614,14 +614,14 @@ export default function AdminDashboard() {
                                         required
                                         min="0"
                                         step="0.01"
-                                        className="w-full bg-slate-950 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500/50"
+                                        className="w-full bg-slate-950 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-amber-500/50"
                                     />
                                 </div>
                             </div>
                             <p className="text-sm text-slate-400">Commission will be calculated at 20% automatically.</p>
                             <button
                                 type="submit"
-                                className="w-full py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition-all"
+                                className="w-full py-3 bg-amber-500 hover:bg-amber-500 text-white font-semibold rounded-lg transition-all"
                             >
                                 Add Referral
                             </button>
