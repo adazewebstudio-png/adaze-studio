@@ -5,6 +5,8 @@
 [build.environment]
   NEXT_TELEMETRY_DISABLED = "1"
   NODE_VERSION = "20"
+  # Skip Netlify Forms check - we use Supabase for form handling
+  NETLIFY_NEXT_VERIFY_FORMS = "false"
 
-# Let Netlify auto-detect Next.js runtime without explicit plugin
-# The plugin was causing "Failed assembling prerendered content" errors
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
