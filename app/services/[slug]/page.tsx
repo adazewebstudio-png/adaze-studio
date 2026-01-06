@@ -67,12 +67,9 @@ export default function ServiceDetailPage() {
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider mb-6">
                             Selected Package
                         </div>
-                        <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">
+                        <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-8">
                             {currentPackage.name}
                         </h1>
-                        <p className="text-2xl font-light text-emerald-400 mb-8">
-                            {currentPackage.price}
-                        </p>
 
                         <div className="prose prose-invert max-w-none mb-10">
                             <p className="text-lg text-slate-300 leading-relaxed mb-6">
@@ -123,7 +120,7 @@ export default function ServiceDetailPage() {
                                         className="w-full bg-slate-950 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all appearance-none cursor-pointer"
                                     >
                                         {packages.map(p => (
-                                            <option key={p.id} value={p.id}>{p.name} - {p.price}</option>
+                                            <option key={p.id} value={p.id}>{p.name}</option>
                                         ))}
                                     </select>
                                     <p className="text-xs text-slate-500">

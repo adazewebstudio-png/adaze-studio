@@ -12,7 +12,7 @@ export default function Navbar() {
             <div className="container mx-auto px-6 h-20 flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-2 z-50">
                     <div className="relative w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center">
-                        <Image src="/logo.png" alt="Adaze Web Studio Logo" fill className="object-cover" />
+                        <Image src="/logo.png" alt="Adaze Web Studio Logo" fill className="object-cover" priority />
                     </div>
                     <span className="font-display font-bold text-xl tracking-tight text-white">Adaze Web Studio</span>
                 </Link>
