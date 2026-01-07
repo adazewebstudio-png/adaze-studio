@@ -1,9 +1,9 @@
 import { MetadataRoute } from 'next'
-import { blogPosts } from '@/lib/blog'
+import { getAllPosts } from '@/lib/sanity'
 
 const BASE_URL = 'https://adazewebstudio.com'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const currentDate = new Date().toISOString()
 
     // Main pages
@@ -75,13 +75,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.8,
     }))
 
-    // Blog/Journal articles
-    const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
-        url: `${BASE_URL}/journal/${post.slug}`,
-        lastModified: post.updatedAt || post.publishedAt,
-        changeFrequency: 'monthly' as const,
-        priority: 0.7,
-    }))
+    // Blog/Journal articles from Sanity
+    let blogPages: MetadataRoute.Sitemap = []
+    try {
+        const posts = await getAllPosts()
+        if (posts && posts.length > 0) {
+            blogPages = posts.map((post) => ({
+                url: `${BASE_URL}/journal/${post.slug.current}`,
+                lastModified: post.publishedAt,
+                changeFrequency: 'monthly' as const,
+                priority: 0.7,
+            }))
+        }
+    } catch (error) {
+        // If Sanity fetch fails, continue without blog pages
+        console.error('Failed to fetch blog posts for sitemap:', error)
+    }
 
     // Legal pages
     const legalPages: MetadataRoute.Sitemap = [
@@ -129,4 +138,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     return [...mainPages, ...servicePages, ...blogPages, ...legalPages, ...affiliatePages]
 }
-

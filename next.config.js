@@ -13,6 +13,11 @@ const nextConfig = {
                 hostname: '**.supabase.co',
                 pathname: '/storage/**',
             },
+            {
+                protocol: 'https',
+                hostname: 'cdn.sanity.io',
+                pathname: '/images/**',
+            },
         ],
     },
 

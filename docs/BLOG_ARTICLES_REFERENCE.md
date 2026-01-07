@@ -1,26 +1,28 @@
-export interface BlogPost {
-    slug: string
-    title: string
-    excerpt: string
-    content: string
-    author: string
-    authorRole: string
-    publishedAt: string
-    updatedAt?: string
-    category: 'Web Design' | 'Business Growth' | 'Tech Trends' | 'Case Studies' | 'SEO & Marketing'
-    tags: string[]
-    readTime: number
-    featured: boolean
-    image?: string
-}
+# Blog Articles Reference
 
-export const blogPosts: BlogPost[] = [
-    {
-        slug: 'how-much-does-website-cost-ghana-2026',
-        title: 'How Much Does a Website Cost in Ghana? Complete 2026 Guide',
-        excerpt: 'Discover the real costs of building a professional website in Ghana. From basic business sites to complex e-commerce platforms, we break down pricing, what affects costs, and how to get the best value.',
-        content: `
-## The Real Cost of a Website in Ghana
+Use this file to copy the articles into your Sanity Studio.
+
+---
+
+## Article 1: How Much Does a Website Cost in Ghana?
+
+**Title:** How Much Does a Website Cost in Ghana? Complete 2026 Guide
+
+**Slug:** how-much-does-website-cost-ghana-2026
+
+**Excerpt:** Discover the real costs of building a professional website in Ghana. From basic business sites to complex e-commerce platforms, we break down pricing, what affects costs, and how to get the best value.
+
+**Category:** Web Design
+
+**Tags:** pricing, ghana, website cost, business
+
+**Read Time:** 5
+
+**Featured:** Yes
+
+**Body:**
+
+### The Real Cost of a Website in Ghana
 
 If you're a business owner in Ghana thinking about getting a website, one of your first questions is probably: "How much will this cost?" The answer isn't straightforward, but this guide will give you a clear understanding of what to expect.
 
@@ -67,22 +69,29 @@ An online store requires:
 
 At Adaze Web Studio, we offer transparent pricing with no hidden fees. We work with your budget to deliver a website that actually grows your business.
 
-Ready to get started? [Contact us for a free quote](/start).
-        `,
-        author: 'Richard Adaze',
-        authorRole: 'Founder, Adaze Web Studio',
-        publishedAt: '2026-01-05',
-        category: 'Web Design',
-        tags: ['pricing', 'ghana', 'website cost', 'business'],
-        readTime: 5,
-        featured: true,
-    },
-    {
-        slug: 'why-your-business-needs-website-2026',
-        title: 'Why Your Business Needs a Website in 2026 (Even in Ghana)',
-        excerpt: 'Still wondering if your business needs a website? Here are 7 compelling reasons why having a professional website is no longer optional for businesses in Ghana.',
-        content: `
-## 7 Reasons Your Ghana Business Needs a Website
+Ready to get started? Contact us for a free quote.
+
+---
+
+## Article 2: Why Your Business Needs a Website in 2026
+
+**Title:** Why Your Business Needs a Website in 2026 (Even in Ghana)
+
+**Slug:** why-your-business-needs-website-2026
+
+**Excerpt:** Still wondering if your business needs a website? Here are 7 compelling reasons why having a professional website is no longer optional for businesses in Ghana.
+
+**Category:** Business Growth
+
+**Tags:** business, digital presence, ghana, small business
+
+**Read Time:** 4
+
+**Featured:** Yes
+
+**Body:**
+
+### 7 Reasons Your Ghana Business Needs a Website
 
 Many business owners in Ghana still rely solely on WhatsApp and social media for their online presence. While these platforms are great, they're not enough anymore. Here's why:
 
@@ -124,22 +133,29 @@ With analytics, you can learn:
 
 ### Ready to Get Started?
 
-At Adaze Web Studio, we specialize in creating websites that actually grow your business. [Start your project today](/start).
-        `,
-        author: 'Richard Adaze',
-        authorRole: 'Founder, Adaze Web Studio',
-        publishedAt: '2026-01-03',
-        category: 'Business Growth',
-        tags: ['business', 'digital presence', 'ghana', 'small business'],
-        readTime: 4,
-        featured: true,
-    },
-    {
-        slug: 'web-design-trends-2026',
-        title: 'Top 10 Web Design Trends for 2026 You Need to Know',
-        excerpt: 'Stay ahead of the competition with these cutting-edge web design trends. From AI-powered experiences to sustainable design, discover what\'s shaping the future of websites.',
-        content: `
-## Web Design Trends Shaping 2026
+At Adaze Web Studio, we specialize in creating websites that actually grow your business. Start your project today.
+
+---
+
+## Article 3: Web Design Trends 2026
+
+**Title:** Top 10 Web Design Trends for 2026 You Need to Know
+
+**Slug:** web-design-trends-2026
+
+**Excerpt:** Stay ahead of the competition with these cutting-edge web design trends. From AI-powered experiences to sustainable design, discover what's shaping the future of websites.
+
+**Category:** Tech Trends
+
+**Tags:** design trends, web design, 2026, innovation
+
+**Read Time:** 6
+
+**Featured:** No
+
+**Body:**
+
+### Web Design Trends Shaping 2026
 
 The web design landscape is evolving rapidly. Here are the top trends we're implementing for our clients:
 
@@ -188,22 +204,29 @@ Designing for everyone, including users with disabilities. This isn't just ethic
 
 ### Want a Trendy Website?
 
-We implement these trends thoughtfully, ensuring your website is modern but timeless. [Let's discuss your project](/start).
-        `,
-        author: 'Richard Adaze',
-        authorRole: 'Founder, Adaze Web Studio',
-        publishedAt: '2026-01-01',
-        category: 'Tech Trends',
-        tags: ['design trends', 'web design', '2026', 'innovation'],
-        readTime: 6,
-        featured: false,
-    },
-    {
-        slug: 'seo-basics-small-business-ghana',
-        title: 'SEO Basics: How to Get Your Ghana Business Found on Google',
-        excerpt: 'Learn the fundamentals of SEO and start ranking your business on Google. This beginner-friendly guide covers everything from keywords to local SEO.',
-        content: `
-## Getting Started with SEO for Your Ghana Business
+We implement these trends thoughtfully, ensuring your website is modern but timeless. Let's discuss your project.
+
+---
+
+## Article 4: SEO Basics for Ghana Businesses
+
+**Title:** SEO Basics: How to Get Your Ghana Business Found on Google
+
+**Slug:** seo-basics-small-business-ghana
+
+**Excerpt:** Learn the fundamentals of SEO and start ranking your business on Google. This beginner-friendly guide covers everything from keywords to local SEO.
+
+**Category:** SEO & Marketing
+
+**Tags:** SEO, google, marketing, beginners
+
+**Read Time:** 5
+
+**Featured:** No
+
+**Body:**
+
+### Getting Started with SEO for Your Ghana Business
 
 SEO (Search Engine Optimization) is how you get your business found on Google. Here's a simple guide to get started:
 
@@ -220,24 +243,28 @@ SEO is the practice of optimizing your website so it appears higher in search re
 ### Basic SEO Tips
 
 **1. Keyword Research**
+
 Find what your customers are searching for:
 - "web design Ho Ghana"
 - "best restaurant in Accra"
 - "plumber near me"
 
 **2. On-Page SEO**
+
 Optimize your pages:
 - Use keywords in titles and headings
 - Write helpful, detailed content
 - Add alt text to images
 
 **3. Local SEO**
+
 For Ghana businesses:
 - Create a Google Business Profile
 - Add your business to local directories
 - Include your city/region in keywords
 
 **4. Technical SEO**
+
 Make sure your site:
 - Loads fast
 - Works on mobile
@@ -245,6 +272,7 @@ Make sure your site:
 - Uses HTTPS
 
 **5. Content is King**
+
 Create valuable content:
 - Answer common questions
 - Write how-to guides
@@ -252,30 +280,4 @@ Create valuable content:
 
 ### Need Help with SEO?
 
-At Adaze Web Studio, all our websites come with basic SEO optimization. We also offer dedicated SEO services to help you rank higher. [Contact us](/start) to learn more.
-        `,
-        author: 'Richard Adaze',
-        authorRole: 'Founder, Adaze Web Studio',
-        publishedAt: '2025-12-28',
-        category: 'SEO & Marketing',
-        tags: ['SEO', 'google', 'marketing', 'beginners'],
-        readTime: 5,
-        featured: false,
-    },
-]
-
-export function getPostBySlug(slug: string): BlogPost | undefined {
-    return blogPosts.find(post => post.slug === slug)
-}
-
-export function getFeaturedPosts(): BlogPost[] {
-    return blogPosts.filter(post => post.featured)
-}
-
-export function getPostsByCategory(category: BlogPost['category']): BlogPost[] {
-    return blogPosts.filter(post => post.category === category)
-}
-
-export function getAllCategories(): BlogPost['category'][] {
-    return Array.from(new Set(blogPosts.map(post => post.category)))
-}
+At Adaze Web Studio, all our websites come with basic SEO optimization. We also offer dedicated SEO services to help you rank higher. Contact us to learn more.

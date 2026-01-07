@@ -1,51 +1,51 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowLeft, Calendar, Clock, User, Tag, Share2, ArrowRight } from 'lucide-react'
+import Image from 'next/image'
+import { ArrowLeft, Calendar, Clock, Tag, Share2, ArrowRight } from 'lucide-react'
+import { PortableText, PortableTextComponents } from '@portabletext/react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import { blogPosts, getPostBySlug, BlogPost } from '@/lib/blog'
+import { getPostBySlug, getAllPostSlugs, getAllPosts, SanityPost } from '@/lib/sanity'
 import { Metadata } from 'next'
 
-export const dynamic = 'force-static'
+export const revalidate = 60
 
 export async function generateStaticParams() {
-    return blogPosts.map((post) => ({
-        slug: post.slug,
-    }))
+    const slugs = await getAllPostSlugs()
+    return slugs.map((slug) => ({ slug }))
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params
-    const post = getPostBySlug(slug)
+    const post = await getPostBySlug(slug)
 
     if (!post) {
-        return {
-            title: 'Article Not Found',
-        }
+        return { title: 'Article Not Found' }
     }
 
     return {
         title: post.title,
         description: post.excerpt,
         keywords: post.tags,
-        authors: [{ name: post.author }],
+        authors: [{ name: post.author?.name || 'Adaze Web Studio' }],
         openGraph: {
             title: post.title,
             description: post.excerpt,
-            url: `https://adazewebstudio.com/journal/${post.slug}`,
+            url: `https://adazewebstudio.com/journal/${post.slug.current}`,
             type: 'article',
             publishedTime: post.publishedAt,
-            modifiedTime: post.updatedAt || post.publishedAt,
-            authors: [post.author],
+            authors: [post.author?.name || 'Adaze Web Studio'],
             tags: post.tags,
+            images: post.mainImage?.asset?.url ? [post.mainImage.asset.url] : undefined,
         },
         twitter: {
             card: 'summary_large_image',
             title: post.title,
             description: post.excerpt,
+            images: post.mainImage?.asset?.url ? [post.mainImage.asset.url] : undefined,
         },
         alternates: {
-            canonical: `https://adazewebstudio.com/journal/${post.slug}`,
+            canonical: `https://adazewebstudio.com/journal/${post.slug.current}`,
         },
     }
 }
@@ -58,7 +58,105 @@ const categoryColors: { [key: string]: string } = {
     'SEO & Marketing': 'bg-rose-50 text-rose-600 border-rose-100',
 }
 
-function ArticleJsonLd({ post }: { post: BlogPost }) {
+// Custom Portable Text components for beautiful rendering
+const portableTextComponents: PortableTextComponents = {
+    block: {
+        h2: ({ children }) => (
+            <h2 className="text-3xl font-display font-bold text-navy mt-12 mb-6">
+                {children}
+            </h2>
+        ),
+        h3: ({ children }) => (
+            <h3 className="text-2xl font-display font-bold text-navy mt-10 mb-4">
+                {children}
+            </h3>
+        ),
+        h4: ({ children }) => (
+            <h4 className="text-xl font-display font-bold text-navy mt-8 mb-3">
+                {children}
+            </h4>
+        ),
+        normal: ({ children }) => (
+            <p className="text-slate-600 leading-relaxed mb-6 text-lg">
+                {children}
+            </p>
+        ),
+        blockquote: ({ children }) => (
+            <blockquote className="border-l-4 border-primary pl-6 py-2 my-8 bg-primary/5 rounded-r-lg">
+                <p className="text-slate-700 italic text-lg">{children}</p>
+            </blockquote>
+        ),
+    },
+    list: {
+        bullet: ({ children }) => (
+            <ul className="list-disc list-outside ml-6 mb-6 space-y-3 text-slate-600 text-lg">
+                {children}
+            </ul>
+        ),
+        number: ({ children }) => (
+            <ol className="list-decimal list-outside ml-6 mb-6 space-y-3 text-slate-600 text-lg">
+                {children}
+            </ol>
+        ),
+    },
+    listItem: {
+        bullet: ({ children }) => <li className="leading-relaxed">{children}</li>,
+        number: ({ children }) => <li className="leading-relaxed">{children}</li>,
+    },
+    marks: {
+        strong: ({ children }) => <strong className="font-bold text-navy">{children}</strong>,
+        em: ({ children }) => <em className="italic">{children}</em>,
+        underline: ({ children }) => <span className="underline">{children}</span>,
+        code: ({ children }) => (
+            <code className="bg-slate-100 text-primary px-2 py-0.5 rounded font-mono text-sm">
+                {children}
+            </code>
+        ),
+        link: ({ value, children }) => {
+            const href = value?.href || ''
+            const isExternal = href.startsWith('http')
+            return (
+                <Link
+                    href={href}
+                    className="text-primary hover:underline font-medium"
+                    target={isExternal ? '_blank' : undefined}
+                    rel={isExternal ? 'noopener noreferrer' : undefined}
+                >
+                    {children}
+                </Link>
+            )
+        },
+    },
+    types: {
+        image: ({ value }) => {
+            if (!value?.asset?.url) return null
+            return (
+                <figure className="my-10">
+                    <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-lg">
+                        <Image
+                            src={value.asset.url}
+                            alt={value.alt || 'Blog image'}
+                            fill
+                            className="object-cover"
+                        />
+                    </div>
+                    {value.caption && (
+                        <figcaption className="text-center text-slate-500 text-sm mt-3">
+                            {value.caption}
+                        </figcaption>
+                    )}
+                </figure>
+            )
+        },
+        code: ({ value }) => (
+            <pre className="bg-slate-900 text-slate-100 rounded-xl p-6 overflow-x-auto my-8">
+                <code className="font-mono text-sm">{value.code}</code>
+            </pre>
+        ),
+    },
+}
+
+function ArticleJsonLd({ post }: { post: SanityPost }) {
     const jsonLd = {
         "@context": "https://schema.org",
         "@type": "Article",
@@ -66,8 +164,8 @@ function ArticleJsonLd({ post }: { post: BlogPost }) {
         "description": post.excerpt,
         "author": {
             "@type": "Person",
-            "name": post.author,
-            "jobTitle": post.authorRole
+            "name": post.author?.name || 'Adaze Web Studio',
+            "jobTitle": post.author?.role
         },
         "publisher": {
             "@type": "Organization",
@@ -78,14 +176,12 @@ function ArticleJsonLd({ post }: { post: BlogPost }) {
             }
         },
         "datePublished": post.publishedAt,
-        "dateModified": post.updatedAt || post.publishedAt,
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": `https://adazewebstudio.com/journal/${post.slug}`
+            "@id": `https://adazewebstudio.com/journal/${post.slug.current}`
         },
-        "keywords": post.tags.join(", "),
-        "articleSection": post.category,
-        "wordCount": post.content.split(' ').length
+        "keywords": post.tags?.join(", "),
+        "image": post.mainImage?.asset?.url
     }
 
     return (
@@ -98,16 +194,22 @@ function ArticleJsonLd({ post }: { post: BlogPost }) {
 
 export default async function JournalArticle({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params
-    const post = getPostBySlug(slug)
+    const post = await getPostBySlug(slug)
 
     if (!post) {
         notFound()
     }
 
+    const categoryTitle = typeof post.category === 'string' ? post.category : (post.category as any)?.title || 'Uncategorized'
+
     // Get related posts (same category, excluding current)
-    const relatedPosts = blogPosts
-        .filter(p => p.category === post.category && p.slug !== post.slug)
-        .slice(0, 2)
+    const allPosts = await getAllPosts()
+    const relatedPosts = allPosts
+        ?.filter(p => {
+            const pCat = typeof p.category === 'string' ? p.category : (p.category as any)?.title
+            return pCat === categoryTitle && p.slug.current !== post.slug.current
+        })
+        .slice(0, 2) || []
 
     return (
         <>
@@ -128,8 +230,8 @@ export default async function JournalArticle({ params }: { params: Promise<{ slu
 
                         {/* Category */}
                         <div className="mb-4">
-                            <span className={`px-3 py-1 rounded-full text-sm font-bold border ${categoryColors[post.category]}`}>
-                                {post.category}
+                            <span className={`px-3 py-1 rounded-full text-sm font-bold border ${categoryColors[categoryTitle] || 'bg-slate-50 text-slate-600 border-slate-200'}`}>
+                                {categoryTitle}
                             </span>
                         </div>
 
@@ -141,12 +243,22 @@ export default async function JournalArticle({ params }: { params: Promise<{ slu
                         {/* Meta */}
                         <div className="flex flex-wrap items-center gap-6 text-slate-600 mb-8 pb-8 border-b border-slate-200">
                             <div className="flex items-center gap-2">
-                                <div className="w-10 h-10 rounded-full bg-navy flex items-center justify-center text-white font-bold">
-                                    {post.author.charAt(0)}
+                                <div className="w-10 h-10 rounded-full bg-navy flex items-center justify-center text-white font-bold overflow-hidden">
+                                    {post.author?.image?.asset?.url ? (
+                                        <Image
+                                            src={(post.author.image as any).asset.url}
+                                            alt={post.author.name}
+                                            width={40}
+                                            height={40}
+                                            className="object-cover"
+                                        />
+                                    ) : (
+                                        post.author?.name?.charAt(0) || 'A'
+                                    )}
                                 </div>
                                 <div>
-                                    <p className="font-semibold text-navy">{post.author}</p>
-                                    <p className="text-sm text-slate-500">{post.authorRole}</p>
+                                    <p className="font-semibold text-navy">{post.author?.name || 'Adaze Web Studio'}</p>
+                                    <p className="text-sm text-slate-500">{post.author?.role || 'Team'}</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-1 text-sm">
@@ -163,47 +275,42 @@ export default async function JournalArticle({ params }: { params: Promise<{ slu
                             </div>
                         </div>
 
+                        {/* Featured Image */}
+                        {post.mainImage?.asset?.url && (
+                            <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-xl mb-12">
+                                <Image
+                                    src={post.mainImage.asset.url}
+                                    alt={post.mainImage.alt || post.title}
+                                    fill
+                                    className="object-cover"
+                                    priority
+                                />
+                            </div>
+                        )}
+
                         {/* Content */}
-                        <div className="prose prose-lg prose-slate max-w-none 
-                            prose-headings:font-display prose-headings:text-navy prose-headings:font-bold
-                            prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4
-                            prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
-                            prose-p:text-slate-600 prose-p:leading-relaxed
-                            prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-                            prose-strong:text-navy
-                            prose-ul:my-4 prose-li:text-slate-600
-                            prose-ol:my-4
-                        ">
-                            {post.content.split('\n').map((paragraph, index) => {
-                                if (paragraph.startsWith('## ')) {
-                                    return <h2 key={index}>{paragraph.replace('## ', '')}</h2>
-                                } else if (paragraph.startsWith('### ')) {
-                                    return <h3 key={index}>{paragraph.replace('### ', '')}</h3>
-                                } else if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
-                                    return <p key={index}><strong>{paragraph.replace(/\*\*/g, '')}</strong></p>
-                                } else if (paragraph.startsWith('- ')) {
-                                    return null // Handle lists separately
-                                } else if (paragraph.trim()) {
-                                    return <p key={index}>{paragraph}</p>
-                                }
-                                return null
-                            })}
+                        <div className="prose-custom">
+                            {post.body && (
+                                <PortableText value={post.body} components={portableTextComponents} />
+                            )}
                         </div>
 
                         {/* Tags */}
-                        <div className="mt-12 pt-8 border-t border-slate-200">
-                            <div className="flex items-center gap-2 flex-wrap">
-                                <Tag className="w-4 h-4 text-slate-400" />
-                                {post.tags.map((tag) => (
-                                    <span
-                                        key={tag}
-                                        className="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-sm"
-                                    >
-                                        {tag}
-                                    </span>
-                                ))}
+                        {post.tags && post.tags.length > 0 && (
+                            <div className="mt-12 pt-8 border-t border-slate-200">
+                                <div className="flex items-center gap-2 flex-wrap">
+                                    <Tag className="w-4 h-4 text-slate-400" />
+                                    {post.tags.map((tag) => (
+                                        <span
+                                            key={tag}
+                                            className="px-3 py-1 bg-slate-100 text-slate-600 rounded-full text-sm"
+                                        >
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
                             </div>
-                        </div>
+                        )}
 
                         {/* Share */}
                         <div className="mt-8 p-6 bg-slate-50 rounded-2xl">
@@ -225,23 +332,26 @@ export default async function JournalArticle({ params }: { params: Promise<{ slu
                         <div className="container mx-auto max-w-3xl">
                             <h2 className="text-2xl font-bold text-navy mb-6 font-display">Related Articles</h2>
                             <div className="grid md:grid-cols-2 gap-6">
-                                {relatedPosts.map((related) => (
-                                    <Link
-                                        key={related.slug}
-                                        href={`/journal/${related.slug}`}
-                                        className="group bg-slate-50 rounded-xl p-6 hover:bg-slate-100 transition-colors"
-                                    >
-                                        <span className={`px-2 py-0.5 rounded-full text-xs font-bold border ${categoryColors[related.category]}`}>
-                                            {related.category}
-                                        </span>
-                                        <h3 className="text-lg font-bold text-navy mt-3 group-hover:text-primary transition-colors">
-                                            {related.title}
-                                        </h3>
-                                        <p className="text-slate-600 text-sm mt-2 line-clamp-2">
-                                            {related.excerpt}
-                                        </p>
-                                    </Link>
-                                ))}
+                                {relatedPosts.map((related) => {
+                                    const relCat = typeof related.category === 'string' ? related.category : (related.category as any)?.title || 'Uncategorized'
+                                    return (
+                                        <Link
+                                            key={related._id}
+                                            href={`/journal/${related.slug.current}`}
+                                            className="group bg-slate-50 rounded-xl p-6 hover:bg-slate-100 transition-colors"
+                                        >
+                                            <span className={`px-2 py-0.5 rounded-full text-xs font-bold border ${categoryColors[relCat] || 'bg-slate-50 text-slate-600 border-slate-200'}`}>
+                                                {relCat}
+                                            </span>
+                                            <h3 className="text-lg font-bold text-navy mt-3 group-hover:text-primary transition-colors">
+                                                {related.title}
+                                            </h3>
+                                            <p className="text-slate-600 text-sm mt-2 line-clamp-2">
+                                                {related.excerpt}
+                                            </p>
+                                        </Link>
+                                    )
+                                })}
                             </div>
                         </div>
                     </section>
