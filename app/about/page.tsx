@@ -3,9 +3,25 @@ import Link from 'next/link'
 import { ArrowRight, CheckCircle2, Target, Zap, ShieldCheck, Search, Code2, Rocket, BarChart3, Users, Globe, XCircle } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { Metadata } from 'next'
 
 // Force static generation for instant loading
 export const dynamic = 'force-static'
+
+export const metadata: Metadata = {
+    title: 'About Us - Leading Web Design Agency in Ho, Volta Region',
+    description: 'Learn about Adaze Web Studio - the premier web design and software development agency in Ho, Ghana. We help businesses grow with modern websites and apps. Meet our team and discover our mission.',
+    keywords: ['about Adaze Web Studio', 'web design agency Ho', 'software company Volta Region', 'web developers Ghana', 'tech agency Ho'],
+    openGraph: {
+        title: 'About Adaze Web Studio | Web Design Agency in Ghana',
+        description: 'Discover how we help businesses grow with modern digital solutions',
+        url: 'https://adazewebstudio.com/about',
+        type: 'website',
+    },
+    alternates: {
+        canonical: 'https://adazewebstudio.com/about',
+    },
+}
 
 export default function About() {
     return (

@@ -3,9 +3,25 @@ import { ArrowRight, Globe, Smartphone, Shield, Code2, Layers } from 'lucide-rea
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import { serviceCategories } from '@/lib/packages'
+import { Metadata } from 'next'
 
 // Force static generation for instant loading
 export const dynamic = 'force-static'
+
+export const metadata: Metadata = {
+    title: 'Web Design & Development Services in Ho, Ghana',
+    description: 'Professional web design, mobile app development, e-commerce solutions, and SEO services in Ho, Volta Region. Get a modern website that grows your business. Free consultation available!',
+    keywords: ['web design services Ho', 'mobile app development Ghana', 'e-commerce website Ghana', 'SEO services Volta Region', 'website development Ho'],
+    openGraph: {
+        title: 'Our Services | Adaze Web Studio',
+        description: 'Web design, mobile apps, e-commerce, and SEO services in Ghana',
+        url: 'https://adazewebstudio.com/services',
+        type: 'website',
+    },
+    alternates: {
+        canonical: 'https://adazewebstudio.com/services',
+    },
+}
 
 const iconMap: { [key: string]: React.ReactNode } = {
     Globe: <Globe className="w-12 h-12" />,

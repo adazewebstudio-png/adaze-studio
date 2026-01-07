@@ -3,9 +3,25 @@ import Link from 'next/link'
 import { ArrowRight, CheckCircle2, Building2, Landmark, Home, ExternalLink, Zap, Star } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { Metadata } from 'next'
 
 // Force static generation for instant loading
 export const dynamic = 'force-static'
+
+export const metadata: Metadata = {
+    title: 'Our Portfolio - Websites & Apps We\'ve Built in Ghana',
+    description: 'Explore our portfolio of successful web design and app development projects in Ghana. See how we\'ve helped businesses like VRARED, AYECCU, and more grow with modern digital solutions.',
+    keywords: ['web design portfolio Ghana', 'website examples Ho', 'app development projects', 'Adaze Web Studio work', 'Ghana web projects'],
+    openGraph: {
+        title: 'Portfolio | Adaze Web Studio',
+        description: 'See our best web design and app development projects',
+        url: 'https://adazewebstudio.com/portfolio',
+        type: 'website',
+    },
+    alternates: {
+        canonical: 'https://adazewebstudio.com/portfolio',
+    },
+}
 
 export default function Portfolio() {
     return (
