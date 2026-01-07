@@ -22,7 +22,7 @@ export default function Navbar() {
                     <Link href="/services" className="hover:text-primary transition-colors">Services</Link>
                     <Link href="/portfolio" className="hover:text-primary transition-colors">Portfolio</Link>
                     <Link href="/about" className="hover:text-primary transition-colors">About</Link>
-                    <Link href="/affiliate" className="hover:text-primary transition-colors">Affiliate</Link>
+                    <Link href="/journal" className="hover:text-primary transition-colors">Journal</Link>
                 </div>
 
                 {/* CTA Button (Desktop) */}
@@ -67,11 +67,11 @@ export default function Navbar() {
                                 About
                             </Link>
                             <Link
-                                href="/affiliate"
+                                href="/journal"
                                 onClick={() => setIsOpen(false)}
                                 className="text-lg font-medium text-slate-300 hover:text-white transition-colors py-2 border-b border-white/5"
                             >
-                                Affiliate
+                                Journal
                             </Link>
                             <Link
                                 href="/start"

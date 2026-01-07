@@ -37,10 +37,12 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* Legal Links */}
+                    {/* Resources */}
                     <div>
-                        <h4 className="font-bold text-white mb-8 text-sm uppercase tracking-wider">Legal</h4>
+                        <h4 className="font-bold text-white mb-8 text-sm uppercase tracking-wider">Resources</h4>
                         <ul className="space-y-5 text-sm text-slate-400">
+                            <li><Link href="/journal" className="hover:text-primary transition-colors">The Studio Journal</Link></li>
+                            <li><Link href="/faqs" className="hover:text-primary transition-colors">FAQs</Link></li>
                             <li><Link href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
                             <li><Link href="/terms" className="hover:text-primary transition-colors">Terms of Use</Link></li>
                             <li><Link href="/accessibility" className="hover:text-primary transition-colors">Accessibility</Link></li>

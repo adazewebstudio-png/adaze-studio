@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { blogPosts } from '@/lib/blog'
 
 const BASE_URL = 'https://adazewebstudio.com'
 
@@ -43,6 +44,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: 'monthly',
             priority: 0.8,
         },
+        {
+            url: `${BASE_URL}/journal`,
+            lastModified: currentDate,
+            changeFrequency: 'weekly',
+            priority: 0.9,
+        },
+        {
+            url: `${BASE_URL}/faqs`,
+            lastModified: currentDate,
+            changeFrequency: 'monthly',
+            priority: 0.7,
+        },
     ]
 
     // Service pages
@@ -60,6 +73,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: currentDate,
         changeFrequency: 'monthly' as const,
         priority: 0.8,
+    }))
+
+    // Blog/Journal articles
+    const blogPages: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+        url: `${BASE_URL}/journal/${post.slug}`,
+        lastModified: post.updatedAt || post.publishedAt,
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
     }))
 
     // Legal pages
@@ -106,5 +127,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
     ]
 
-    return [...mainPages, ...servicePages, ...legalPages, ...affiliatePages]
+    return [...mainPages, ...servicePages, ...blogPages, ...legalPages, ...affiliatePages]
 }
+
