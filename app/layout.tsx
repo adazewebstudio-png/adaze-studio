@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, Outfit } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import { clsx } from 'clsx'
 
@@ -142,6 +143,20 @@ export default function RootLayout({
                 <meta name="geo.placename" content="Ho, Volta Region" />
                 <meta name="geo.position" content="6.6008;0.4713" />
                 <meta name="ICBM" content="6.6008, 0.4713" />
+
+                {/* Google Analytics */}
+                <Script
+                    src="https://www.googletagmanager.com/gtag/js?id=G-4069LC2HC5"
+                    strategy="afterInteractive"
+                />
+                <Script id="google-analytics" strategy="afterInteractive">
+                    {`
+                        window.dataLayer = window.dataLayer || [];
+                        function gtag(){dataLayer.push(arguments);}
+                        gtag('js', new Date());
+                        gtag('config', 'G-4069LC2HC5');
+                    `}
+                </Script>
             </head>
             <body className="bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary">
                 {/* Skip to Content - Accessibility */}
