@@ -157,8 +157,26 @@ export default function RootLayout({
                         gtag('config', 'G-4069LC2HC5');
                     `}
                 </Script>
+
+                {/* Google Tag Manager */}
+                <Script id="google-tag-manager" strategy="beforeInteractive">
+                    {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                    })(window,document,'script','dataLayer','GTM-KTS8PCVK');`}
+                </Script>
             </head>
             <body className="bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary">
+                {/* Google Tag Manager (noscript) */}
+                <noscript>
+                    <iframe
+                        src="https://www.googletagmanager.com/ns.html?id=GTM-KTS8PCVK"
+                        height="0"
+                        width="0"
+                        style={{ display: 'none', visibility: 'hidden' }}
+                    />
+                </noscript>
                 {/* Skip to Content - Accessibility */}
                 <a href="#main-content" className="skip-to-content">
                     Skip to main content
