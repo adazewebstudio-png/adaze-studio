@@ -1,10 +1,11 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowLeft, Calendar, Clock, Tag, Share2, ArrowRight } from 'lucide-react'
+import { ArrowLeft, Calendar, Clock, Tag, ArrowRight } from 'lucide-react'
 import { PortableText, PortableTextComponents } from '@portabletext/react'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import ShareButtons from '@/components/ShareButtons'
 import { getPostBySlug, getAllPostSlugs, getAllPosts, SanityPost } from '@/lib/sanity'
 import { Metadata } from 'next'
 
@@ -25,12 +26,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
     return {
         title: post.title,
-        description: post.excerpt,
+        description: post.metaDescription || post.excerpt,
         keywords: post.tags,
         authors: [{ name: post.author?.name || 'Adaze Web Studio' }],
         openGraph: {
             title: post.title,
-            description: post.excerpt,
+            description: post.metaDescription || post.excerpt,
             url: `https://adazewebstudio.com/journal/${post.slug.current}`,
             type: 'article',
             publishedTime: post.publishedAt,
@@ -41,7 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         twitter: {
             card: 'summary_large_image',
             title: post.title,
-            description: post.excerpt,
+            description: post.metaDescription || post.excerpt,
             images: post.mainImage?.asset?.url ? [post.mainImage.asset.url] : undefined,
         },
         alternates: {
@@ -203,7 +204,10 @@ export default async function JournalArticle({ params }: { params: Promise<{ slu
         notFound()
     }
 
-    const categoryTitle = typeof post.category === 'string' ? post.category : (post.category as any)?.title || 'Uncategorized'
+    // Fix: Handle category correctly whether it's a string (reference) or an object (expanded)
+    const categoryTitle = typeof post.category === 'object' && post.category !== null
+        ? (post.category as any).title
+        : (typeof post.category === 'string' ? post.category : 'Uncategorized')
 
     // Get related posts (same category, excluding current)
     const allPosts = await getAllPosts()
@@ -317,14 +321,11 @@ export default async function JournalArticle({ params }: { params: Promise<{ slu
 
                         {/* Share */}
                         <div className="mt-8 p-6 bg-slate-50 rounded-2xl">
-                            <div className="flex items-center justify-between">
-                                <p className="text-slate-600 font-medium">Found this helpful? Share it!</p>
-                                <div className="flex items-center gap-3">
-                                    <button className="p-2 bg-white rounded-full hover:bg-primary hover:text-white transition-colors border border-slate-200">
-                                        <Share2 className="w-4 h-4" />
-                                    </button>
-                                </div>
-                            </div>
+                            <ShareButtons
+                                title={post.title}
+                                url={`https://adazewebstudio.com/journal/${post.slug.current}`}
+                                description={post.metaDescription || post.excerpt}
+                            />
                         </div>
                     </div>
                 </article>

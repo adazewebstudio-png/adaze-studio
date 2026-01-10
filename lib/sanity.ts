@@ -64,9 +64,10 @@ export const blogQueries = {
         title,
         slug,
         excerpt,
+        metaDescription,
         body,
         publishedAt,
-        category,
+        category->{title, slug},
         tags,
         readTime,
         featured,
@@ -155,9 +156,10 @@ export interface SanityPost {
     title: string
     slug: { current: string }
     excerpt: string
+    metaDescription?: string
     body?: any[] // Portable Text
     publishedAt: string
-    category: string
+    category: string | { title: string, slug: { current: string } }
     tags: string[]
     readTime: number
     featured: boolean

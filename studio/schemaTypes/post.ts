@@ -63,8 +63,16 @@ export default defineType({
             title: 'Excerpt',
             type: 'text',
             rows: 3,
-            description: 'A short summary for previews and SEO (max 160 characters)',
+            description: 'A short summary for previews (displayed on blog cards)',
             validation: (Rule) => Rule.max(300),
+        }),
+        defineField({
+            name: 'metaDescription',
+            title: 'SEO Description',
+            type: 'text',
+            rows: 3,
+            description: 'Specific description for social media sharing and Google search results. Best if kept under 160 characters.',
+            validation: (Rule) => Rule.max(160),
         }),
         defineField({
             name: 'body',
