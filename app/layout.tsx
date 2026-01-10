@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import { Inter, Outfit } from 'next/font/google'
 import Script from 'next/script'
+import WhatsAppButton from '@/components/WhatsAppButton'
 import './globals.css'
 import { clsx } from 'clsx'
 
@@ -187,7 +188,7 @@ export default function RootLayout({
                     <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full bg-primary/10 blur-[100px]" />
                     <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] rounded-full bg-accent/10 blur-[100px]" />
                 </div>
-
+                <WhatsAppButton />
             </body>
         </html>
     )
