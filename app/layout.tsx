@@ -96,17 +96,10 @@ export const metadata: Metadata = {
     },
     icons: {
         icon: [
-            { url: '/favicon.png', sizes: '32x32', type: 'image/png' },
-            { url: '/favicon.png', sizes: '16x16', type: 'image/png' },
+            { url: '/icon.jpg', sizes: 'any', type: 'image/jpeg' },
         ],
         apple: [
-            { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-        ],
-        other: [
-            {
-                rel: 'mask-icon',
-                url: '/favicon.png',
-            },
+            { url: '/icon.jpg', sizes: '180x180', type: 'image/jpeg' },
         ],
     },
     manifest: '/manifest.json',
