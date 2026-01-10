@@ -12,6 +12,9 @@ const categoryColors: { [key: string]: string } = {
     'Tech Trends': 'bg-purple-50 text-purple-600 border-purple-100',
     'Case Studies': 'bg-amber-50 text-amber-600 border-amber-100',
     'SEO & Marketing': 'bg-rose-50 text-rose-600 border-rose-100',
+    'Development & Engineering': 'bg-indigo-50 text-indigo-600 border-indigo-100',
+    'Startup & Product Strategy': 'bg-orange-50 text-orange-600 border-orange-100',
+    'Maintenance, Security & Performance': 'bg-slate-50 text-slate-600 border-slate-100',
 }
 
 function PostCard({ post, featured = false }: { post: SanityPost; featured?: boolean }) {
@@ -137,8 +140,8 @@ export default function JournalFilter({ allPosts, featuredPosts, categories }: J
                         <button
                             onClick={() => setSelectedCategory(null)}
                             className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all border ${selectedCategory === null
-                                    ? 'bg-navy text-white border-navy shadow-lg'
-                                    : 'bg-white text-slate-600 border-slate-200 hover:border-navy/30'
+                                ? 'bg-navy text-white border-navy shadow-lg'
+                                : 'bg-white text-slate-600 border-slate-200 hover:border-navy/30'
                                 }`}
                         >
                             All Articles
@@ -148,8 +151,8 @@ export default function JournalFilter({ allPosts, featuredPosts, categories }: J
                                 key={category._id}
                                 onClick={() => setSelectedCategory(category.title)}
                                 className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all border ${selectedCategory === category.title
-                                        ? 'bg-navy text-white border-navy shadow-lg'
-                                        : `${categoryColors[category.title] || 'bg-white text-slate-600 border-slate-200 hover:border-navy/30'}`
+                                    ? 'bg-navy text-white border-navy shadow-lg'
+                                    : `${categoryColors[category.title] || 'bg-white text-slate-600 border-slate-200 hover:border-navy/30'}`
                                     }`}
                             >
                                 {category.title}

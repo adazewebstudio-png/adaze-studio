@@ -85,6 +85,30 @@ const categories = [
         description: 'SEO tips and digital marketing strategies',
         color: 'rose',
     },
+    {
+        _type: 'category',
+        _id: 'category-dev-engineering',
+        title: 'Development & Engineering',
+        slug: { _type: 'slug', current: 'development-engineering' },
+        description: 'Technical deep-dives into software architecture and coding',
+        color: 'indigo',
+    },
+    {
+        _type: 'category',
+        _id: 'category-startup-strategy',
+        title: 'Startup & Product Strategy',
+        slug: { _type: 'slug', current: 'startup-product-strategy' },
+        description: 'Guidance on building and launching successful digital products',
+        color: 'orange',
+    },
+    {
+        _type: 'category',
+        _id: 'category-maintenance-security',
+        title: 'Maintenance, Security & Performance',
+        slug: { _type: 'slug', current: 'maintenance-security-performance' },
+        description: 'Keeping your digital assets safe, fast, and up-to-date',
+        color: 'slate',
+    },
 ]
 
 // Helper to convert markdown-like text to Portable Text blocks
