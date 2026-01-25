@@ -23,7 +23,7 @@ const nextConfig = {
 
     // Experimental performance features
     experimental: {
-        optimizeCss: true,
+        optimizeCss: process.env.NODE_ENV === 'production',
     },
 };
 

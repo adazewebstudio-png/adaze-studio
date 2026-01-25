@@ -141,9 +141,9 @@ export default function RootLayout({
                 {/* Google Analytics */}
                 <Script
                     src="https://www.googletagmanager.com/gtag/js?id=G-4069LC2HC5"
-                    strategy="beforeInteractive"
+                    strategy="afterInteractive"
                 />
-                <Script id="google-analytics" strategy="beforeInteractive">
+                <Script id="google-analytics" strategy="afterInteractive">
                     {`
                         window.dataLayer = window.dataLayer || [];
                         function gtag(){dataLayer.push(arguments);}
@@ -153,7 +153,7 @@ export default function RootLayout({
                 </Script>
 
                 {/* Google Tag Manager */}
-                <Script id="google-tag-manager" strategy="beforeInteractive">
+                <Script id="google-tag-manager" strategy="afterInteractive">
                     {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
                     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=

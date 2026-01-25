@@ -56,6 +56,43 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             changeFrequency: 'monthly',
             priority: 0.7,
         },
+        // Individual Case Studies
+        {
+            url: `${BASE_URL}/portfolio/vrared`,
+            lastModified: currentDate,
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: `${BASE_URL}/portfolio/ayeccu`,
+            lastModified: currentDate,
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: `${BASE_URL}/portfolio/adonai-estate`,
+            lastModified: currentDate,
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: `${BASE_URL}/portfolio/mawuli-pop`,
+            lastModified: currentDate,
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: `${BASE_URL}/portfolio/richard-adaze`,
+            lastModified: currentDate,
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: `${BASE_URL}/portfolio/adonai-engineering`,
+            lastModified: currentDate,
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
     ]
 
     // Service pages

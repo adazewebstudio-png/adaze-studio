@@ -54,6 +54,58 @@ export default function JsonLd() {
         }
     }
 
+    // Services Schema for RAO/AEO
+    const serviceCatalog = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Web Design and Software Development",
+        "provider": {
+            "@id": "https://adazewebstudio.com/#organization"
+        },
+        "areaServed": {
+            "@type": "Country",
+            "name": "Ghana"
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Core Digital Solutions",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Web Design & Conversion Optimization",
+                        "description": "High-performance websites built to attract traffic, build trust, and convert visitors into customers."
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Custom Software & Member Portals",
+                        "description": "Secure, scalable platforms designed to automate operations, manage members, and replace manual work."
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "E-Commerce Development",
+                        "description": "Conversion-focused online stores with secure payment integration for Ghanaian and international markets."
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Mobile App Development",
+                        "description": "Cross-platform iOS and Android applications built for real business utility and long-term scalability."
+                    }
+                }
+            ]
+        }
+    }
+
     // Local Business Schema
     const localBusiness = {
         "@context": "https://schema.org",
@@ -87,44 +139,6 @@ export default function JsonLd() {
                 "closes": "17:00"
             }
         ],
-        "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Web Development Services",
-            "itemListElement": [
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Website Design & Development",
-                        "description": "Custom, responsive websites built with modern technologies"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Mobile App Development",
-                        "description": "Native and cross-platform mobile applications"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "E-commerce Solutions",
-                        "description": "Online stores with secure payment integration"
-                    }
-                },
-                {
-                    "@type": "Offer",
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "SEO Optimization",
-                        "description": "Search engine optimization to improve online visibility"
-                    }
-                }
-            ]
-        },
         "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.9",
@@ -155,6 +169,46 @@ export default function JsonLd() {
         },
         "inLanguage": "en-US"
     }
+
+    // Showcase Projects for RAO/AEO
+    const projects = [
+        {
+            "@context": "https://schema.org",
+            "@type": "Project",
+            "name": "VRARED Real Estate Platform",
+            "description": "A comprehensive digital ecosystem for real estate professionals in the Volta Region, including an MLS and LMS.",
+            "url": "https://adazewebstudio.com/portfolio/vrared",
+            "image": "https://adazewebstudio.com/vrared_logo.png",
+            "customer": {
+                "@type": "Organization",
+                "name": "Volta Region Association of Real Estate Developers"
+            }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Project",
+            "name": "AYECCU Member Portal",
+            "description": "A secure financial management portal and corporate website for the Akatsi Youth Entrepreneurs Cooperative Credit Union.",
+            "url": "https://adazewebstudio.com/portfolio/ayeccu",
+            "image": "https://adazewebstudio.com/ayeccu_logo.jpg",
+            "customer": {
+                "@type": "Organization",
+                "name": "AYECCU"
+            }
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "Project",
+            "name": "Adonai Estate Corporate Platform",
+            "description": "Enterprise-grade real estate website and property listing engine for one of Ghana's leading developers.",
+            "url": "https://adazewebstudio.com/portfolio/adonai-estate",
+            "image": "https://adazewebstudio.com/adonai_estate_logo.jpg",
+            "customer": {
+                "@type": "Organization",
+                "name": "Adonai Estate Ltd"
+            }
+        }
+    ]
 
     // FAQ Schema for AEO (Answer Engine Optimization)
     const faq = {
@@ -238,6 +292,10 @@ export default function JsonLd() {
             />
             <script
                 type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceCatalog) }}
+            />
+            <script
+                type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(website) }}
             />
             <script
@@ -248,6 +306,13 @@ export default function JsonLd() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
             />
+            {projects.map((proj, idx) => (
+                <script
+                    key={idx}
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(proj) }}
+                />
+            ))}
         </>
     )
 }

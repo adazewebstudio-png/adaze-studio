@@ -75,7 +75,9 @@ export const blogQueries = {
         mainImage {
             asset->{url},
             alt
-        }
+        },
+        keyTakeaways,
+        faq
     }`,
 
     // Get all categories
@@ -172,6 +174,8 @@ export interface SanityPost {
         asset: { url: string }
         alt: string
     }
+    keyTakeaways?: string[]
+    faq?: { question: string; answer: string }[]
 }
 
 export interface SanityCategory {

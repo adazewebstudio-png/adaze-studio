@@ -97,6 +97,26 @@ export default defineType({
             initialValue: false,
             description: 'Show this post in the featured section',
         }),
+        defineField({
+            name: 'keyTakeaways',
+            title: 'Key Takeaways (RAO)',
+            type: 'array',
+            of: [{ type: 'string' }],
+            description: '3-5 bullet points summarizing the article for AI retrieval and quick reading.',
+        }),
+        defineField({
+            name: 'faq',
+            title: 'Frequently Asked Questions (AEO)',
+            type: 'array',
+            of: [{
+                type: 'object',
+                fields: [
+                    { name: 'question', type: 'string', title: 'Question' },
+                    { name: 'answer', type: 'text', title: 'Answer', rows: 3 }
+                ]
+            }],
+            description: 'Q&A pairs to generate FAQ Schema for Answer Engines (Google SGE, Perplexity).',
+        }),
     ],
 
     preview: {
