@@ -27,7 +27,7 @@ export default function Home() {
                                 <span className="inline-block py-1.5 px-3 rounded-full bg-navy/5 text-navy text-xs font-bold uppercase tracking-wider mb-8 border border-navy/10 leading-relaxed">
                                     Trusted by real estate, finance, and member-based organizations across Ghana
                                 </span>
-                                <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-6 text-navy tracking-tight">
+                                <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.25] md:leading-[1.1] mb-6 text-navy tracking-tight">
                                     Conversion-Focused Web Design & Custom Software for <span className="text-primary relative whitespace-nowrap">
                                         Growing Businesses
                                         <svg className="absolute w-full h-3 -bottom-1 left-0 text-primary/20" viewBox="0 0 100 10" preserveAspectRatio="none">
@@ -35,7 +35,7 @@ export default function Home() {
                                         </svg>
                                     </span> in Ghana
                                 </h1>
-                                <p className="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                                <p className="text-lg md:text-xl text-slate-600 mb-8 leading-[1.8] max-w-2xl mx-auto lg:mx-0">
                                     We design and build high-performance websites, portals, and apps that help organizations generate qualified leads, streamline operations, and scale with confidence.
                                 </p>
 
@@ -523,7 +523,7 @@ export default function Home() {
                                     </span>
                                 </summary>
                                 <div className="px-6 pb-6 text-slate-600 leading-relaxed">
-                                    Adaze Web Studio is known for speed. Most standard business websites are delivered in **5–14 days**. Larger enterprise platforms, mobile apps, or member portals (like those for VRARED or AYECCU) typically take **4–8 weeks**, depending on specific functional requirements.
+                                    Adaze Web Studio is known for speed. Most standard business websites are delivered in 5–14 days. Larger enterprise platforms, mobile apps, or member portals (like those for VRARED or AYECCU) typically take 4–8 weeks, depending on specific functional requirements.
                                 </div>
                             </details>
 

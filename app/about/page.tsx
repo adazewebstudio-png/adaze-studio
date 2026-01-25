@@ -67,9 +67,9 @@ export default function About() {
                     <div className="container mx-auto px-6 max-w-6xl">
                         <div className="flex flex-col lg:flex-row items-center gap-16">
                             {/* Founder Image Placeholder - USER MUST REPLACE */}
-                            <div className="lg:w-1/2 relative">
+                            <div className="lg:w-1/2 relative w-full">
                                 <div className="absolute top-0 -left-4 w-full h-full border-2 border-primary rounded-[2rem] translate-x-4 translate-y-4 hidden md:block"></div>
-                                <div className="relative rounded-[2rem] overflow-hidden shadow-2xl bg-slate-200 aspect-square group">
+                                <div className="relative rounded-[2rem] overflow-hidden shadow-2xl bg-slate-200 aspect-[3/4] md:aspect-square group w-full max-w-sm mx-auto lg:max-w-none">
                                     <Image
                                         src="/richard-profile.png"
                                         alt="Richard Adaze - Founder of Adaze Web Studio"
@@ -77,7 +77,7 @@ export default function About() {
                                         className="object-cover object-center"
                                         priority
                                     />
-                                    <div className="absolute bottom-0 left-0 right-0 bg-navy/90 backdrop-blur-sm p-6 text-white translate-y-2 group-hover:translate-y-0 transition-transform">
+                                    <div className="absolute bottom-0 left-0 right-0 bg-navy/90 backdrop-blur-sm p-6 text-white translate-y-0 md:translate-y-2 md:group-hover:translate-y-0 transition-transform">
                                         <p className="font-display font-bold text-xl">Richard Adaze</p>
                                         <p className="text-primary text-sm font-medium">Founder & Lead Architect</p>
                                     </div>

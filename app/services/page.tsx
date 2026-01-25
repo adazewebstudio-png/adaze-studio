@@ -24,7 +24,7 @@ export default function Services() {
                         <span className="inline-block py-1.5 px-4 rounded-full bg-blue-100/50 text-blue-700 text-sm font-bold uppercase tracking-wider mb-6 border border-blue-200">
                             Our Services
                         </span>
-                        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-navy leading-[1.1]">
+                        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-navy leading-[1.25] md:leading-[1.1]">
                             Digital Solutions Built to Solve <span className="text-primary">Real Business Problems</span>
                         </h1>
                         <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed mb-10">
@@ -40,12 +40,12 @@ export default function Services() {
                 <section className="py-24 border-b border-slate-100" id="web-design">
                     <div className="container mx-auto px-6 max-w-7xl">
                         <div className="flex flex-col lg:flex-row gap-16 items-start">
-                            <div className="lg:w-1/2 sticky top-24">
+                            <div className="lg:w-1/2 lg:sticky lg:top-24">
                                 <div className="inline-flex items-center gap-2 text-primary font-bold tracking-wider uppercase text-sm mb-4">
                                     <Globe className="w-5 h-5" />
                                     Web Design & Conversion Optimization
                                 </div>
-                                <h2 className="font-display text-4xl md:text-5xl font-bold text-navy mb-6 leading-tight">
+                                <h2 className="font-display text-4xl md:text-5xl font-bold text-navy mb-6 leading-[1.25] md:leading-tight">
                                     Websites Built to Rank, Convert, and Build Trust
                                 </h2>
                                 <p className="text-lg text-slate-600 mb-8 leading-relaxed">
@@ -123,12 +123,12 @@ export default function Services() {
                 <section className="py-24 bg-slate-50 border-b border-slate-200" id="software">
                     <div className="container mx-auto px-6 max-w-7xl">
                         <div className="flex flex-col lg:flex-row-reverse gap-16 items-start">
-                            <div className="lg:w-1/2 sticky top-24">
+                            <div className="lg:w-1/2 lg:sticky lg:top-24">
                                 <div className="inline-flex items-center gap-2 text-blue-600 font-bold tracking-wider uppercase text-sm mb-4">
                                     <Code2 className="w-5 h-5" />
                                     Custom Software & Business Portals
                                 </div>
-                                <h2 className="font-display text-4xl md:text-5xl font-bold text-navy mb-6 leading-tight">
+                                <h2 className="font-display text-4xl md:text-5xl font-bold text-navy mb-6 leading-[1.25] md:leading-tight">
                                     Secure Platforms That Replace Manual Work and Scattered Tools
                                 </h2>
                                 <p className="text-lg text-slate-600 mb-8 leading-relaxed">
@@ -205,12 +205,12 @@ export default function Services() {
                 <section className="py-24 border-b border-slate-100" id="ecommerce">
                     <div className="container mx-auto px-6 max-w-7xl">
                         <div className="flex flex-col lg:flex-row gap-16 items-start">
-                            <div className="lg:w-1/2 sticky top-24">
+                            <div className="lg:w-1/2 lg:sticky lg:top-24">
                                 <div className="inline-flex items-center gap-2 text-emerald-600 font-bold tracking-wider uppercase text-sm mb-4">
                                     <ShoppingCart className="w-5 h-5" />
                                     E-Commerce Development
                                 </div>
-                                <h2 className="font-display text-4xl md:text-5xl font-bold text-navy mb-6 leading-tight">
+                                <h2 className="font-display text-4xl md:text-5xl font-bold text-navy mb-6 leading-[1.25] md:leading-tight">
                                     Online Stores Designed to Convert Visitors Into Buyers
                                 </h2>
                                 <p className="text-lg text-slate-600 mb-8 leading-relaxed">
@@ -288,12 +288,12 @@ export default function Services() {
                 <section className="py-24 bg-slate-50" id="mobile">
                     <div className="container mx-auto px-6 max-w-7xl">
                         <div className="flex flex-col lg:flex-row-reverse gap-16 items-start">
-                            <div className="lg:w-1/2 sticky top-24">
+                            <div className="lg:w-1/2 lg:sticky lg:top-24">
                                 <div className="inline-flex items-center gap-2 text-purple-600 font-bold tracking-wider uppercase text-sm mb-4">
                                     <Smartphone className="w-5 h-5" />
                                     Mobile App Development
                                 </div>
-                                <h2 className="font-display text-4xl md:text-5xl font-bold text-navy mb-6 leading-tight">
+                                <h2 className="font-display text-4xl md:text-5xl font-bold text-navy mb-6 leading-[1.25] md:leading-tight">
                                     Cross-Platform Mobile Apps Built for Real Business Use
                                 </h2>
                                 <p className="text-lg text-slate-600 mb-8 leading-relaxed">

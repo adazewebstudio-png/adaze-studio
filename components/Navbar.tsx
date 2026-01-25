@@ -12,22 +12,24 @@ export default function Navbar() {
             <div className="container mx-auto px-6 h-20 flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-2 z-50">
                     <div className="relative w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center">
-                        <Image src="/logo.jpg" alt="Adaze Web Studio Logo" fill className="object-cover" priority />
+                        <Image src="/Adaze Web Studio Logo.jpg" alt="Adaze Web Studio Logo" fill className="object-cover" priority />
                     </div>
                     <span className="font-display font-bold text-xl tracking-tight text-white">Adaze Web Studio</span>
                 </Link>
 
                 {/* Desktop Menu */}
-                <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <div className="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300">
+                    <Link href="/" className="hover:text-primary transition-colors">Home</Link>
                     <Link href="/services" className="hover:text-primary transition-colors">Services</Link>
                     <Link href="/portfolio" className="hover:text-primary transition-colors">Portfolio</Link>
                     <Link href="/about" className="hover:text-primary transition-colors">About</Link>
                     <Link href="/journal" className="hover:text-primary transition-colors">Journal</Link>
+                    <Link href="/faqs" className="hover:text-primary transition-colors">FAQs</Link>
                     <Link href="/affiliate" className="hover:text-primary transition-colors">Affiliate</Link>
                 </div>
 
                 {/* CTA Button (Desktop) */}
-                <div className="hidden md:block">
+                <div className="hidden lg:block">
                     <Link href="/start" className="px-5 py-2.5 bg-primary text-navy font-bold rounded-full hover:bg-amber-400 transition-all text-sm">
                         Start a Project
                     </Link>
@@ -36,7 +38,7 @@ export default function Navbar() {
                 {/* Mobile Menu Button */}
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className="md:hidden p-2 text-slate-300 hover:text-white z-50"
+                    className="lg:hidden p-2 text-slate-300 hover:text-white z-50"
                     aria-label="Toggle mobile menu"
                 >
                     {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -44,8 +46,15 @@ export default function Navbar() {
 
                 {/* Mobile Menu Overlay */}
                 {isOpen && (
-                    <div className="absolute top-20 left-0 w-full bg-slate-950 border-b border-white/10 shadow-2xl md:hidden animate-in slide-in-from-top-2 duration-200">
+                    <div className="absolute top-20 left-0 w-full bg-slate-950 border-b border-white/10 shadow-2xl lg:hidden animate-in slide-in-from-top-2 duration-200">
                         <div className="flex flex-col p-6 space-y-4">
+                            <Link
+                                href="/"
+                                onClick={() => setIsOpen(false)}
+                                className="text-lg font-medium text-slate-300 hover:text-white transition-colors py-2 border-b border-white/5"
+                            >
+                                Home
+                            </Link>
                             <Link
                                 href="/services"
                                 onClick={() => setIsOpen(false)}
@@ -73,6 +82,13 @@ export default function Navbar() {
                                 className="text-lg font-medium text-slate-300 hover:text-white transition-colors py-2 border-b border-white/5"
                             >
                                 Journal
+                            </Link>
+                            <Link
+                                href="/faqs"
+                                onClick={() => setIsOpen(false)}
+                                className="text-lg font-medium text-slate-300 hover:text-white transition-colors py-2 border-b border-white/5"
+                            >
+                                FAQs
                             </Link>
                             <Link
                                 href="/affiliate"

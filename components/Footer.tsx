@@ -11,7 +11,7 @@ export default function Footer() {
                     <div className="md:col-span-1">
                         <Link href="/" className="inline-flex items-center gap-3 mb-8 group">
                             <div className="relative w-12 h-12 rounded-xl overflow-hidden flex items-center justify-center group-hover:opacity-80 transition-opacity">
-                                <Image src="/logo.jpg" alt="Adaze Web Studio Logo" fill className="object-cover" />
+                                <Image src="/Adaze Web Studio Logo.jpg" alt="Adaze Web Studio Logo" fill className="object-cover" />
                             </div>
                             <span className="font-display font-bold text-xl text-white tracking-tight">Adaze Web Studio</span>
                         </Link>
